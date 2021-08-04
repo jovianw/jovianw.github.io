@@ -1,0 +1,268 @@
+:root {
+    --highlight-color: rgb(109, 175, 199);
+    --highlight-color-2: #f77062;
+    --darker-color: #141414;
+    --lightest-color: #fff;
+    --lighter-color: rgb(230, 240, 241);
+    --typewriter-speed: 2s;
+    --fade-speed: 2s;
+    --pause-time: 1s;
+    --begin-time: 0.5s;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif
+} 
+
+.navbar {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: 0.3s ease-in;
+    transform: translateY(-100%);
+    animation: 
+        moveIn var(--fade-speed) ease calc(var(--begin-time) + var(--typewriter-speed) + var(--pause-time)) forwards;
+}
+
+.navbar__container {
+    display: flex;
+    justify-content: center;
+    height: 80px;
+    z-index: 1;
+    width: 100%;
+    max-width: 1300px;
+    padding: 0 50px;
+}
+
+.navbar__menu {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    text-align: center;
+}
+
+.navbar__item {
+    height: 80px;
+    font-weight: bold;
+}
+
+.navbar__links {
+    color: var(--darker-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    padding: 0 16px;
+    height: 100%;
+    transition: all 0.3s ease;
+}
+
+.navbar__links.current {
+    text-decoration: underline;
+}
+
+.navbar__links:hover {
+    color: var(--highlight-color);
+}
+
+@media screen and (max-width: 600px) {
+    .navbar__container {
+        display: flex;
+        height: 80px;
+        z-index: 1;
+        width: 100%;
+    }
+
+    .navbar__menu {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        position: absolute;
+        top: -1000px;
+        opacity: 0;
+        transition: all 0.5s ease;
+        z-index: -1;
+    }
+
+    .navbar__menu.active {
+        background-color: var(--lightest-color);
+        top: 0;
+        opacity: 1;
+        transition: all 0.5s ease;
+        z-index: -1;
+        font-size: 24px;
+        padding: 24px 0;
+    }
+
+    .navbar__toggle .bar {
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        transition: all 0.3s ease-in-out;
+        background: var(--darker-color);
+        z-index: 999;
+        display: block;
+        cursor: pointer;
+    }
+
+    .navbar__toggle:hover .bar {
+        background: var(--highlight-color);
+    }
+
+    .navbar__item {
+        height: auto;
+    }
+
+    .navbar__links {
+        text-align: center;
+        display: table;
+        line-height: 64px;
+    }
+
+    #mobile-menu {
+        position: absolute;
+        top: 20%;
+        right: 5%;
+        transform: translate(5%, 20%);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    #mobile-menu.is-active .bar:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+    }
+
+    #mobile-menu.is-active .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
+    }
+}
+
+
+/* Hero Section CSS */
+.main {
+    height: calc(100vh - 230px);
+    background-color: var(--lightest-color);
+    display: grid;
+    place-content: center;
+    text-align: center;
+}
+
+.main h1 {
+    font-size: max(4vw, 28px);
+    font-family: 'Roboto Mono', monospace;
+    position: relative;
+    width: max-content;
+}
+
+.main h1::before,
+.main h1::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.main h1::before {
+    background: var(--lightest-color);
+    animation: 
+        typewriter var(--typewriter-speed) steps(25) var(--begin-time) forwards;
+}
+
+.main h1::after {
+    width: 0.125em;
+    background: var(--darker-color);
+    animation: 
+        typewriter var(--typewriter-speed) steps(25) var(--begin-time) forwards,
+        blink 1s steps(25) calc(var(--typewriter-speed) + var(--begin-time)) infinite;
+}
+
+@keyframes typewriter {
+    to { 
+        left: 100%; 
+    }
+}
+
+@keyframes blink {
+    to {
+        background: transparent;
+    }
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes moveIn {
+    to {
+        transform: translateY(0);
+    }
+}
+
+.main a {
+    font-size: clamp(16px, 2vw, 32px);
+    font-weight: normal;
+    opacity: 0;
+    animation: 
+        fadeIn calc(var(--fade-speed) + 1s) ease calc(var(--begin-time) + var(--typewriter-speed) + var(--pause-time)) forwards;
+    margin: 5%;
+    color: var(--lightest-color);
+    text-decoration: none;
+    width: max-content;
+    padding: 1ch;
+    background: var(--darker-color);
+    justify-self: center;
+    border-radius: 2vw;
+}
+
+
+/* Footer CSS */
+.footer__container {
+    position: relative;
+    overflow: hidden;
+}
+
+.footer {
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5vh;
+    transform: translateY(100%);
+    animation: moveIn var(--fade-speed) ease calc(var(--begin-time) + var(--typewriter-speed) + var(--pause-time)) forwards;
+}
+
+.footer p {
+    color: var(--darker-color);
+    font-size: small;
+}
+
+.footer__social {
+    margin-top: auto;
+    display: flex;
+    column-gap: 16px;
+}
+
+.main__social__icons--link {
+    color: var(--darker-color);
+    font-size: 24px;
+    transition: 0.1s ease-in;
+}
+
+.main__social__icons--link:hover {
+    color: var(--highlight-color);
+}
