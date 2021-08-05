@@ -4,10 +4,12 @@
     --darker-color: #141414;
     --lightest-color: #fff;
     --lighter-color: rgb(230, 240, 241);
-    --typewriter-speed: 2s;
+    --typewriter1-speed: 0.8s;
+    --typewriter2-speed: 1.5s;
     --fade-speed: 2s;
+    --end-time: 1s;
+    --begin-time: 0.2s;
     --pause-time: 1s;
-    --begin-time: 0.5s;
 }
 
 * {
@@ -29,7 +31,7 @@
     transition: 0.3s ease-in;
     transform: translateY(-100%);
     animation: 
-        moveIn var(--fade-speed) ease calc(var(--begin-time) + var(--typewriter-speed) + var(--pause-time)) forwards;
+        moveIn var(--fade-speed) ease calc(var(--begin-time) + var(--typewriter1-speed) + var(--pause-time) + var(--typewriter2-speed) + var(--end-time)) forwards;
 }
 
 .navbar__container {
@@ -188,18 +190,27 @@
 .main h1::before {
     background: var(--lightest-color);
     animation: 
-        typewriter var(--typewriter-speed) steps(25) var(--begin-time) forwards;
+        typewriter1 var(--typewriter1-speed) steps(7) var(--begin-time) forwards,
+        typewriter2 var(--typewriter2-speed) steps(18) calc(var(--begin-time) + var(--typewriter1-speed) + var(--pause-time)) forwards;
 }
 
 .main h1::after {
     width: 0.125em;
     background: var(--darker-color);
     animation: 
-        typewriter var(--typewriter-speed) steps(25) var(--begin-time) forwards,
-        blink 1s steps(25) calc(var(--typewriter-speed) + var(--begin-time)) infinite;
+        typewriter1 var(--typewriter1-speed) steps(7) var(--begin-time) forwards,
+        typewriter2 var(--typewriter2-speed) steps(18) calc(var(--begin-time) + var(--typewriter1-speed) + var(--pause-time)) forwards,
+        blink 0.8s steps(7) calc(var(--typewriter1-speed) + var(--begin-time)),
+        blink 1s steps(18) calc(var(--typewriter1-speed) + var(--pause-time) + var(--typewriter2-speed) + var(--begin-time)) infinite;
 }
 
-@keyframes typewriter {
+@keyframes typewriter1 {
+    to { 
+        left: 28%; 
+    }
+}
+
+@keyframes typewriter2 {
     to { 
         left: 100%; 
     }
@@ -228,7 +239,7 @@
     font-weight: normal;
     opacity: 0;
     animation: 
-        fadeIn calc(var(--fade-speed) + 1s) ease calc(var(--begin-time) + var(--typewriter-speed) + var(--pause-time)) forwards;
+        fadeIn calc(var(--fade-speed) + 1s) ease calc(var(--begin-time) + var(--typewriter1-speed) + var(--pause-time) + var(--typewriter2-speed) + var(--end-time)) forwards;
     margin: 5%;
     color: var(--lightest-color);
     text-decoration: none;
@@ -246,7 +257,7 @@
 @media screen and (max-width: 480px) {
     :root {
         --typewriter-speed: 1s;
-        --pause-time: 0.5s;
+        --end-time: 0.5s;
         --begin-time: 0.2s;
     }
 
@@ -291,7 +302,7 @@
     justify-content: center;
     padding: 5vh;
     transform: translateY(100%);
-    animation: moveIn var(--fade-speed) ease calc(var(--begin-time) + var(--typewriter-speed) + var(--pause-time)) forwards;
+    animation: moveIn var(--fade-speed) ease calc(var(--begin-time) + var(--typewriter1-speed) + var(--pause-time) + var(--typewriter2-speed) + var(--end-time)) forwards;
 }
 
 .footer p {
