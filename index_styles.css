@@ -10,6 +10,7 @@
     --end-time: 1s;
     --begin-time: 0.2s;
     --pause-time: 1s;
+    --typwriter3-speed: 2s;
 }
 
 * {
@@ -256,7 +257,9 @@
 
 @media screen and (max-width: 480px) {
     :root {
-        --typewriter-speed: 1s;
+        --typewriter2-speed: 1s;
+        --typewriter1-speed: 0s;
+        --pause-speed: 0s;
         --end-time: 0.5s;
         --begin-time: 0.2s;
     }
@@ -276,15 +279,15 @@
 
     .main h1::before {
         animation: 
-            typewriter var(--typewriter-speed) steps(6) var(--begin-time) forwards;
+            typewriter2 var(--typewriter2-speed) steps(6) var(--begin-time) forwards;
     }
     
     .main h1::after {
         width: 0.125em;
         background: var(--darker-color);
         animation: 
-            typewriter var(--typewriter-speed) steps(6) var(--begin-time) forwards,
-            blink 1s steps(6) calc(var(--typewriter-speed) + var(--begin-time)) infinite;
+            typewriter2 var(--typewriter2-speed) steps(6) var(--begin-time) forwards,
+            blink 1s steps(6) calc(var(--typewriter2-speed) + var(--begin-time)) infinite;
     }
 }
 
