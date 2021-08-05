@@ -147,14 +147,25 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .navbar__toggle:hover .bar {
+        background: var(--darker-color);
+    }
+}
+
 
 /* Hero Section CSS */
 .main {
-    height: calc(100vh - 230px);
+    height: calc(100vh - 80px - min(20vh, 150px));
     background-color: var(--lightest-color);
     display: grid;
     place-content: center;
     text-align: center;
+}
+
+.short-text { 
+    display: none; 
+    width: max-content;
 }
 
 .main h1 {
@@ -228,6 +239,43 @@
     border-radius: 2vw;
 }
 
+.main a:hover {
+    background: var(--highlight-color);
+}
+
+@media screen and (max-width: 480px) {
+    :root {
+        --typewriter-speed: 1s;
+        --pause-time: 0.5s;
+        --begin-time: 0.2s;
+    }
+
+    .short-text { 
+        display: block; 
+        justify-self: center;
+    }
+
+    .full-text { 
+        display: none; 
+    }
+
+    .main h1 {
+        font-size: max(16vw, 28px);
+    }
+
+    .main h1::before {
+        animation: 
+            typewriter var(--typewriter-speed) steps(6) var(--begin-time) forwards;
+    }
+    
+    .main h1::after {
+        width: 0.125em;
+        background: var(--darker-color);
+        animation: 
+            typewriter var(--typewriter-speed) steps(6) var(--begin-time) forwards,
+            blink 1s steps(6) calc(var(--typewriter-speed) + var(--begin-time)) infinite;
+    }
+}
 
 /* Footer CSS */
 .footer__container {
@@ -236,7 +284,7 @@
 }
 
 .footer {
-    height: 150px;
+    height: min(20vh, 150px);
     display: flex;
     flex-direction: column;
     align-items: center;

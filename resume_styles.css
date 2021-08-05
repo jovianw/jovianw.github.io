@@ -161,6 +161,11 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .navbar__toggle:hover .bar {
+        background: var(--darker-color);
+    }
+}
 
 /* Hero Section CSS */
 .main {
@@ -395,6 +400,31 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .timeline__flex {
+        background: linear-gradient(var(--darker-color), var(--darker-color)) no-repeat top left 10vw/6px 100%;
+        padding: 10%;
+    }
+
+    .timeline__text--container {
+        margin-left: 10%;
+        margin-bottom: 10%;
+        width: auto;
+        border: 6px solid var(--darker-color);
+        padding: 24px;
+        align-self: center;
+        position: static;
+        /* background-color: yellow; */
+        background-color: var(--lightest-color);
+        z-index: 1;
+    }
+
+    .timeline__img--container {
+        transform: scaleX(-1);
+        position: absolute;
+        left: calc(10vw - 52px);
+    }
+}
 
 /* Footer CSS */
 .footer {

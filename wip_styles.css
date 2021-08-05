@@ -144,6 +144,11 @@
     }
 }
 
+@media screen and (max-width: 480px) {
+    .navbar__toggle:hover .bar {
+        background: var(--darker-color);
+    }
+}
 
 /* Hero Section CSS */
 .main {
