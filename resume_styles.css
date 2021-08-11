@@ -162,8 +162,20 @@
 }
 
 @media screen and (max-width: 480px) {
+    .navbar__toggle .bar {
+        background: var(--darker-color);
+    }
+
     .navbar__toggle:hover .bar {
         background: var(--darker-color);
+    }
+
+    .navbar.scrolled .bar {
+        background: var(--lightest-color);
+    }
+
+    .navbar.scrolled .navbar__toggle:hover .bar {
+        background-color: var(--lightest-color);
     }
 }
 
