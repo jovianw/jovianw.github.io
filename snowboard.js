@@ -213,7 +213,7 @@ function jump() {
             snowboarder_container.classList.remove("jump");
             onGround = true;
             snowboarder.src = "assets/standing1.png";
-        }, 2000);
+        }, 1800);
     }
 }
 

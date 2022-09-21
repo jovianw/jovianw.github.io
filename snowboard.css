@@ -189,7 +189,7 @@ canvas {
 }
 
 .jump {
-    animation: jump 2s linear;
+    animation: jump 1.8s linear;
 }
 
 #snowboarder {
