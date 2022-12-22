@@ -132,7 +132,7 @@ body {
     padding: 2px;
     background: var(--lighter-color);
     position: relative;
-    border-radius: 20px;
+    border-radius: 30px;
     overflow: hidden;
     box-shadow: rgb(0 0 0 / 5%) 0px 2px 5px inset;
 }
@@ -166,7 +166,7 @@ body {
 	position: absolute;
 	width: 90px;
 	height: calc(100% - 4px);
-	border-radius: 20px;
+	border-radius: 30px;
 	transition: .5s;
     box-shadow: rgb(0 0 0 / 10%) 0px 3px 8px;
 }
@@ -441,19 +441,19 @@ h1 {
     transition: var(--card-transition);
 }
 
-.timeline-card:hover .timeline-title {
+.timeline-card:hover, .timeline-card:active .timeline-title {
     top: 0;
     transform: translateY(0%);
     color: var(--lightest-color);
 }
 
-.timeline-card:hover p {
+.timeline-card:hover, .timeline-card:active p {
     opacity: 1;
     transition: var(--card-transition);
     transition-delay: 0.2s;
 }
 
-.timeline-card:hover .timeline-text {
+.timeline-card:hover, .timeline-card:active .timeline-text {
     background-color: rgba(0, 0, 0, 0.8);
 }
 
@@ -477,7 +477,7 @@ h1 {
     appearance: none;
 }
 
-.timeline-card:hover .timeline-button {
+.timeline-card:hover, .timeline-card:active .timeline-button {
     opacity: 1;
     transition: var(--card-transition);
     transition-delay: 0.2s;
@@ -612,11 +612,11 @@ h1 {
     height: 100%;
 }
 
-.explore-card:hover .explore-image {
+.explore-card:hover, .explore-card:active .explore-image {
     opacity: 0;
 }
 
-.explore-card:hover .explore-button {
+.explore-card:hover, .explore-card:active .explore-button {
     opacity: 1;
 }
 
@@ -730,4 +730,11 @@ h1 {
         height: calc(100% - 80px);
         overflow-y: scroll;
     }
+}
+
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: var(--darker-color);
 }
