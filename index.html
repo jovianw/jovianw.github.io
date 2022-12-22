@@ -10,6 +10,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime&family=Roboto+Mono:wght@300&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <script src="https://kit.fontawesome.com/c4909129f8.js" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -28,7 +29,8 @@
     <!-- Menu -->
     <nav class="navbar">
         <h3>Jovian Wang</h3>
-        <div class="navbar-container">
+        <div id="navbar-container">
+            <div id="navbar-background"></div>
             <div id="navbar-selector"></div>
             <button type="button" class="navbar-button" onclick="selectAbout()">About</button>
             <button type="button" class="navbar-button" onclick="selectExplore()">Explore</button>
@@ -37,29 +39,29 @@
 
     <!-- About -->
     <div id="about">
-        <div class="about-hero">
+        <div id="about-hero">
             <div class="about-img--container">
                 <img src="assets/graduation_1.jpg" alt="Jovian Wang" id="about-img">
             </div>
             <div class="about-summary--container">
-                <div class="about-summary">
+                <div id="about-summary">
                     <h1>JOVIAN WANG</h1>
                     <h2>Computer Science, Economics, and Data Science</h2>
-                    <p>Hello! I'm an undergraduate-level student at Vanderbilt University, studying computer science, economics, and data science. On the side, I'm a tennis player, digital artist, and snowboard enthusiast.</p>
+                    <p id="about-resize">Hello! I'm an undergraduate-level student at Vanderbilt University, studying computer science, economics, and data science. On the side, I'm a tennis player, digital artist, and snowboard enthusiast.</p>
                 </div>
             </div>
             <div class="about-info--container">
-                <div class="about-info">
+                <div id="about-info">
                     <p>jovian.l.wang@vanderbilt.edu</p>
                     <p>U.S. Citizen</p>
                     <div class="about-social">
                         <a href="https://www.facebook.com/wang.jovian/" class="about-social-icons--link" target="_blank">
                             <i class="fab fa-facebook"></i>
                         </a>
-                        <a href="mailto:wg.jovian+website@gmail.com?subject=Lets connect!" class="about-social-icons--link" target="_blank">
+                        <a href="mailto:jovian.l.wang@vanderbilt.edu?subject=Lets connect!" class="about-social-icons--link" target="_blank">
                             <i class="fas fa-envelope-square"></i>
                         </a>
-                        <a href="https://www.linkedin.com/in/jovian-wang-27982a1b8/" class="about-social-icons--link" target="_blank">
+                        <a href="https://www.linkedin.com/in/jovianwang/" class="about-social-icons--link" target="_blank">
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <div class="about-button-container">
@@ -112,6 +114,7 @@
                         <h4>2022</h4>
                     </div>
                     <p>Oversee the designs for Vanderbilt University’s 2022 ninth annual hackathon website and the VandyHack’s cross-year mobile website. Designed and installed on-site hackathon and event decorations.</p>
+                    <button type="button" class="timeline-button" onclick="selectExplore()">Explore</button>
                 </div>
             </div>
             <div class="timeline-card">
@@ -216,12 +219,12 @@
                 <img src="assets/images/carleton.png" alt="test card" class="timeline-image">
                 <div class="timeline-text">
                     <div class="timeline-title">
-                        <h3>What’s Your Beef: The Effect of Visual Representation on Framing, Carleton College Summer Quantitative Reasoning Institute</h3>
+                        <h3>What’s Your Beef: The Effect of Visual Representation on Framing, SQRI</h3>
                         <h4>2018</h4>
                     </div>
-                    <p>Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon
-                        MTurk experiment on consumer ratings with 219 participants. A trend was observed but a 2-by-3 analysis of variance
-                        indicated no statistically significant difference in consumer ratings based on differences in meat product packaging.</p>
+                    <p>Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon
+                        MTurk experiment on consumer ratings and a 2-by-3 analysis of variance on the data.</p>
+                    <button type="button" class="timeline-button" onclick="selectExplore()">Explore</button>
                 </div>
             </div>
         </div>
@@ -230,32 +233,56 @@
     <div id="explore">
         <div class="explore-hero">
             <h1>Curious Creations</h1>
-            <h2>This is where I'll be putting web-accessible creations. Beware: most have no real use beyond experimentation.</h2>
+            <h2>This is where I'll be putting web-accessible stuff. Beware: some are just experimental websites with no real use.</h2>
         </div>
         <div class="vertical-line"></div>
         <div id="explore-scroller" class="vertical-scroller">
             <div class="explore-card">
                 <img src="assets/images/scuffedfish2.png" alt="test card" class="explore-image">
-                <a class="explore-title" href="https://jovian.wang/chessbot/" target="_blank">
-                    <h1>scuffedfish</h1>
+                <a class="explore-button" href="https://jovian.wang/chessbot/" target="_blank">
+                    <div class="explore-title">
+                        <h1>scuffedfish</h1> <span class="material-symbols-outlined">arrow_outward</span>
+                    </div>
                 </a>
             </div>
             <div class="explore-card">
                 <img src="assets/images/bird2.png" alt="test card" class="explore-image">
-                <a class="explore-title" href="https://jovian.wang/bird/" target="_blank">
-                    <h1>bird</h1>
+                <a class="explore-button" href="https://jovian.wang/bird/" target="_blank">
+                    <div class="explore-title">
+                        <h1>bird</h1> <span class="material-symbols-outlined">arrow_outward</span>
+                    </div>
                 </a>
             </div>
             <div class="explore-card">
                 <img src="assets/images/snowboard.png" alt="test card" class="explore-image">
-                <a class="explore-title" href="https://jovian.wang/snowboard.html" target="_blank">
-                    <h1>snowboard</h1>
+                <a class="explore-button" href="https://jovian.wang/snowboard.html" target="_blank">
+                    <div class="explore-title">
+                        <h1>snowboard</h1> <span class="material-symbols-outlined">arrow_outward</span>
+                    </div>
                 </a>
             </div>
             <div class="explore-card">
                 <img src="assets/images/wheel.png" alt="test card" class="explore-image">
-                <a class="explore-title" href="https://jovian.wang/wheel/" target="_blank">
-                    <h1>wheel</h1>
+                <a class="explore-button" href="https://jovian.wang/wheel/" target="_blank">
+                    <div class="explore-title">
+                        <h1>wheel</h1> <span class="material-symbols-outlined">arrow_outward</span>
+                    </div>
+                </a>
+            </div>
+            <div class="explore-card">
+                <img src="assets/images/vandyhacks.jpg" alt="test card" class="explore-image">
+                <a class="explore-button" href="https://vandyhacks.org/" target="_blank">
+                    <div class="explore-title">
+                        <h1>vandyhacks</h1> <span class="material-symbols-outlined">arrow_outward</span>
+                    </div>
+                </a>
+            </div>
+            <div class="explore-card">
+                <img src="assets/images/carleton.png" alt="test card" class="explore-image">
+                <a class="explore-button" href="assets/CarletonSQRI.pdf" target="_blank">
+                    <div class="explore-title">
+                        <h1>beef</h1> <span class="material-symbols-outlined">arrow_outward</span>
+                    </div>
                 </a>
             </div>
         </div>
