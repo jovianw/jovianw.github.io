@@ -462,8 +462,8 @@ h1 {
     transition: 0.1s;
     transition-delay: 0s;
     margin-top: 10px;
-    width: 90px;
-    padding: 7px;
+    /* width: 90px; */
+    padding: 7px 14px;
 	background: var(--highlight-color);
 	border: 0;
 	outline: none;
@@ -475,6 +475,17 @@ h1 {
     -webkit-appearance: none;
     -moz-appearance: none;
     appearance: none;
+}
+
+.timeline-button span {
+    display: inline;
+    font-size: inherit;
+    vertical-align: middle;
+    margin: 0 -0.2em;
+}
+
+.timeline-button p {
+    display: inline;
 }
 
 .timeline-card:hover .timeline-button {
@@ -520,8 +531,8 @@ h1 {
 
 
 
-/* Explore */
-#explore {
+/* projects */
+#projects {
     position: absolute;
     left: 100%;
     transition: left 0.5s;
@@ -537,7 +548,7 @@ h1 {
     scroll-behavior: smooth;
 }
 
-#explore::-webkit-scrollbar {
+#projects::-webkit-scrollbar {
     display: none;
 }
 
@@ -547,11 +558,11 @@ h1 {
     width: 0;
 }
 
-.explore-hero {
+.projects-hero {
     margin: 0 30px;
 }
 
-#explore-scroller {
+#projects-scroller {
     margin-top: -40px;
     padding-bottom: 100px;
 }
@@ -574,24 +585,24 @@ h1 {
     display: none;
 }
 
-.explore-card {
-    --explore-transition: 0.4s;
+.projects-card {
+    --projects-transition: 0.4s;
     overflow: hidden;
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: relative;
 }
 
-.explore-image {
+.projects-image {
     inline-size: 100%;
     object-fit: cover;
     height: 100%;
     opacity: 1;
     /* -webkit-mask-image: radial-gradient(100% 100% at center, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0)); */
-    transition: var(--explore-transition);
+    transition: var(--projects-transition);
 }
 
-.explore-button {
+.projects-button {
     position: absolute;
     left: 0;
     top: 0;
@@ -600,11 +611,11 @@ h1 {
     text-decoration: none;
     background-color: var(--darker-color);
     opacity: 0;
-    transition: var(--explore-transition);
+    transition: var(--projects-transition);
     border-radius: 20px;
 }
 
-.explore-title {
+.projects-title {
     text-align: center;
     color: var(--lightest-color);
     display: flex;
@@ -613,16 +624,16 @@ h1 {
     height: 100%;
 }
 
-.explore-card:hover .explore-image {
+.projects-card:hover .projects-image {
     opacity: 0;
 }
 
-.explore-card:hover .explore-button {
+.projects-card:hover .projects-button {
     opacity: 1;
 }
 
 @media screen and (max-width: 600px), (max-height: 500px) {
-    #explore {
+    #projects {
         padding: 0;
         display: block;
     }
@@ -631,12 +642,12 @@ h1 {
         display: none;
     }
     
-    .explore-hero {
+    .projects-hero {
         margin: 0;
         padding: 20px;
     }
     
-    #explore-scroller {
+    #projects-scroller {
         margin: 0;
     }
     
@@ -722,12 +733,12 @@ h1 {
         height: 250px;
     }
 
-    #explore-scroller {
+    #projects-scroller {
         grid-auto-rows: 300px;
         padding-bottom: 20px;
     }
 
-    #explore {
+    #projects {
         height: calc(100% - 80px);
         overflow-y: scroll;
     }

@@ -33,7 +33,7 @@
             <div id="navbar-background"></div>
             <div id="navbar-selector"></div>
             <button type="button" class="navbar-button" onclick="selectAbout()" ontouchstart="selectAbout()">About</button>
-            <button type="button" class="navbar-button" onclick="selectExplore()" ontouchstart="selectExplore()">Explore</button>
+            <button type="button" class="navbar-button" onclick="selectProjects()" ontouchstart="selectProjects()">Projects</button>
         </div>
     </nav>
 
@@ -47,13 +47,13 @@
                 <div id="about-summary">
                     <h1>JOVIAN WANG</h1>
                     <h2>Computer Science, Economics, and Data Science</h2>
-                    <p id="about-resize">Hello! I'm an undergraduate-level student at Vanderbilt University, studying computer science, economics, and data science. On the side, I'm a tennis player, digital artist, and snowboard enthusiast.</p>
+                    <p id="about-resize" class="resizable">Hello! I'm an undergraduate-level student at Vanderbilt University, studying computer science, economics, and data science. I'm also a tennis player, digital artist, and snowboard enthusiast.</p>
                 </div>
             </div>
             <div class="about-info--container">
                 <div id="about-info">
-                    <p>jovian.l.wang@vanderbilt.edu</p>
-                    <p>U.S. Citizen</p>
+                    <p class="resizable">jovian.l.wang@vanderbilt.edu</p>
+                    <p class="resizable">U.S. Citizen</p>
                     <div class="about-social">
                         <a href="https://www.facebook.com/wang.jovian/" class="about-social-icons--link" target="_blank">
                             <i class="fab fa-facebook"></i>
@@ -65,7 +65,7 @@
                             <i class="fab fa-linkedin"></i>
                         </a>
                         <div class="about-button-container">
-                            <a href="assets/JovianWang_Resume.pdf" class="about-button" target="_blank">résumé pdf</a>
+                            <a href="assets/JovianWang_Resume.pdf" class="about-button" target="_blank">resume pdf</a>
                         </div>
                     </div>
                 </div>
@@ -81,8 +81,12 @@
                         <h3>ScuffedFish: A Minimax & Alpha-Beta Pruning Chess AI</h3>
                         <h4>2022</h4>
                     </div>
-                    <p>Developed and analyzed a custom in-browser chess engine using minimax and alpha-beta pruning. Determined that a minimax algorithm that considers positional utility wins more against one that only evaluates piece values and is able to develop the board with common chess openings. </p>
-                    <button type="button" class="timeline-button" onclick="selectExplore()" ontouchstart="selectExplore()">Explore</button>
+                    <p class="resizable">Developed and analyzed a custom in-browser chess engine using minimax and alpha-beta pruning. Determined that a minimax algorithm that considers positional utility wins more against one that only evaluates piece values and is able to develop the board with common chess openings. </p>
+                    <form action="https://jovian.wang/chessbot/" target="_blank">
+                        <button type="submit" class="timeline-button">
+                            <p>ScuffedFish</p> <span class="material-symbols-outlined">arrow_outward</span>
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -92,18 +96,22 @@
                         <h3>Explaining Species Endangerment Through Network Analysis</h3>
                         <h4>2022</h4>
                     </div>
-                    <p>Using the IUCN RedList API and Greater Antillean coral reef guild-prey and guild-species datasets, examined the correlations between species endangerment levels and various network metrics. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species.</p>
+                    <p class="resizable">Using the IUCN RedList API and Greater Antillean coral reef guild-prey and guild-species datasets, examined the correlations between species endangerment levels and various network metrics. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species.</p>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
                 <img src="assets/images/snowboard.png" alt="test card" class="timeline-image">
                 <div class="timeline-text">
                     <div class="timeline-title">
-                        <h3>Snowboard, A For-Fun Experiment</h3>
+                        <h3>Snowboard, A Micro-Website</h3>
                         <h4>2022</h4>
                     </div>
-                    <p>A WIP personal project. Created a Useless Web-esque decorative website to play as a snowboarder. Currently curious, useless, un-optimized, and satisfying.</p>
-                    <button type="button" class="timeline-button" onclick="selectExplore()" ontouchstart="selectExplore()">Explore</button>
+                    <p class="resizable">A WIP personal project. Created a Useless Web-esque decorative website to play as a snowboarder. Currently curious, useless, un-optimized, and satisfying.</p>
+                    <form action="https://jovian.wang/snowboard.html" target="_blank">
+                        <button type="submit" class="timeline-button">
+                            <p>Snowboard</p> <span class="material-symbols-outlined">arrow_outward</span>
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -113,8 +121,12 @@
                         <h3>VandyHacks Design Board</h3>
                         <h4>2022</h4>
                     </div>
-                    <p>Oversee the designs for Vanderbilt University’s 2022 ninth annual hackathon website and the VandyHack’s cross-year mobile website. Designed and installed on-site hackathon and event decorations.</p>
-                    <button type="button" class="timeline-button" onclick="selectExplore()" ontouchstart="selectExplore()">Explore</button>
+                    <p class="resizable">Oversee the designs for Vanderbilt University’s 2022 ninth annual hackathon website and the VandyHack’s cross-year mobile website. Designed and installed on-site hackathon and event decorations.</p>
+                    <form action="https://vandyhacks.org/" target="_blank">
+                        <button type="submit" class="timeline-button">
+                            <p>VandyHacks</p> <span class="material-symbols-outlined">arrow_outward</span>
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -124,7 +136,7 @@
                         <h3>Software Development Intern, Ann Arbor Pharmacometrics Group</h3>
                         <h4>2022</h4>
                     </div>
-                    <p>Led a three-intern team for the full stack development of an internal analysis tool using R Shiny and C++. The product will
+                    <p class="resizable">Led a three-intern team for the full stack development of an internal analysis tool using R Shiny and C++. The product will
                         be used amongst company pharmacometricians to allow customization of drug analysis tables, listings, and figures, and to
                         reduce downtime.</p>
                 </div>
@@ -133,11 +145,15 @@
                 <img src="assets/images/bird.png" alt="test card" class="timeline-image">
                 <div class="timeline-text">
                     <div class="timeline-title">
-                        <h3>Bird, A For-Fun Experiment</h3>
+                        <h3>Bird, A Micro-Website</h3>
                         <h4>2022</h4>
                     </div>
-                    <p>A personal project. Experimented with JavaScript to create a fun little website.</p>
-                    <button type="button" class="timeline-button" onclick="selectExplore()" ontouchstart="selectExplore()">Explore</button>
+                    <p class="resizable">A personal project. Experimented with JavaScript to create a fun little website.</p>
+                    <form action="https://jovian.wang/bird/" target="_blank">
+                        <button type="submit" class="timeline-button">
+                            <p>Bird</p> <span class="material-symbols-outlined">arrow_outward</span>
+                        </button>
+                    </form>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -147,7 +163,7 @@
                         <h3>Teaching Assistant, Vanderbilt University Digital Systems</h3>
                         <h4>2021-2022</h4>
                     </div>
-                    <p>Tutored 33 students in logic, organization, and assembly language programming. Aided in the transition to an online
+                    <p class="resizable">Tutored 33 students in logic, organization, and assembly language programming. Aided in the transition to an online
                         question-and-answer platform for students to anonymously seek coursework help. Assisted professor in grading homework and exams. Standardized scoring and improved answer keys for future use.</p>
                 </div>
             </div>
@@ -158,7 +174,7 @@
                         <h3>Jovian.Wang V2</h3>
                         <h4>2021</h4>
                     </div>
-                    <p>Rebuilt this website from the ground up, picking up skills html, css, and javascript.</p>
+                    <p class="resizable">Rebuilt this website from the ground up, picking up skills html, css, and javascript.</p>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -168,7 +184,7 @@
                         <h3>Machine Learning Intern, Amador Bioscience</h3>
                         <h4>2021</h4>
                     </div>
-                    <p>Used R and XGBoost to build a classifier on research patient data and determine feature importance. Regularly reported analysis
+                    <p class="resizable">Used R and XGBoost to build a classifier on research patient data and determine feature importance. Regularly reported analysis
                         methods and results to company executives. Results were used to determine drug efficacy and guide future research
                         objectives.</p>
                 </div>
@@ -180,7 +196,7 @@
                         <h3>Jovian.Wang V1</h3>
                         <h4>2021</h4>
                     </div>
-                    <p>Built and deployed the first version of this website using Jekyll themes and GitHub Pages.</p>
+                    <p class="resizable">Built and deployed the first version of this website using Jekyll themes and GitHub Pages.</p>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -190,7 +206,7 @@
                         <h3>Vanderbilt Robotics Camera Sub-Team</h3>
                         <h4>2021</h4>
                     </div>
-                    <p>Worked with Camera Sub-team to implement robot vision and compete in the NASA Lunabotics Competition.</p>
+                    <p class="resizable">Worked with Camera Sub-team to implement robot vision and compete in the NASA Lunabotics Competition.</p>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -200,9 +216,9 @@
                         <h3>Vanderbilt University</h3>
                         <h4>2020-2024</h4>
                     </div>
-                    <p>Candidate for BS in Computer Science, BA in Economics.</p> 
-                    <p>Candidate for minor in Data Science.</p> 
-                    <p>Relevant Coursework: Data Structures & Software Design, Discrete Structures & Algorithms, Digital Systems & Operating Systems, Network Analysis, Linear Algebra, Probability and Statistics for Engineering, Data Science, Artificial Intelligence.</p>
+                    <p class="resizable">Candidate for BS in Computer Science, BA in Economics.</p> 
+                    <p class="resizable">Candidate for minor in Data Science.</p> 
+                    <p class="resizable">Relevant Coursework: Data Structures & Software Design, Discrete Structures & Algorithms, Digital Systems & Operating Systems, Network Analysis, Linear Algebra, Probability and Statistics for Engineering, Data Science, Artificial Intelligence.</p>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -212,7 +228,7 @@
                         <h3>An Insight into China’s Investments in Kenya, Yale Young Global Scholars</h3>
                         <h4>2019</h4>
                     </div>
-                    <p>Conducted and presented a case study of China-Kenya relations and the influence of foreign aid on state sovereignty. Highlighted the expanding economic influence of China upon third-world countries and its cultural, political, and long-term impact.</p>
+                    <p class="resizable">Conducted and presented a case study of China-Kenya relations and the influence of foreign aid on state sovereignty. Highlighted the expanding economic influence of China upon third-world countries and its cultural, political, and long-term impact.</p>
                 </div>
             </div>
             <div class="timeline-card" onclick="" ontouchstart="">
@@ -222,65 +238,69 @@
                         <h3>What’s Your Beef: The Effect of Visual Representation on Framing, SQRI</h3>
                         <h4>2018</h4>
                     </div>
-                    <p>Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon
+                    <p class="resizable">Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon
                         MTurk experiment on consumer ratings and a 2-by-3 analysis of variance on the data.</p>
-                    <button type="button" class="timeline-button" onclick="selectExplore()" ontouchstart="selectExplore()">Explore</button>
+                    <form action="assets/CarletonSQRI.pdf" target="_blank">
+                        <button type="submit" class="timeline-button">
+                            <p>What's Your Beef</p> <span class="material-symbols-outlined">arrow_outward</span>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="explore">
-        <div class="explore-hero">
+    <div id="projects">
+        <div class="projects-hero">
             <h1>Curious Creations</h1>
             <h2>This is where I'll be putting web-accessible stuff. Beware: some are just experimental websites with no real use.</h2>
         </div>
         <div class="vertical-line"></div>
-        <div id="explore-scroller" class="vertical-scroller">
-            <div class="explore-card" onclick="" ontouchstart="">
-                <img src="assets/images/scuffedfish2.png" alt="test card" class="explore-image">
-                <a class="explore-button" href="https://jovian.wang/chessbot/" target="_blank">
-                    <div class="explore-title">
+        <div id="projects-scroller" class="vertical-scroller">
+            <div class="projects-card" onclick="" ontouchstart="">
+                <img src="assets/images/scuffedfish2.png" alt="test card" class="projects-image">
+                <a class="projects-button" href="https://jovian.wang/chessbot/" target="_blank">
+                    <div class="projects-title">
                         <h1>scuffedfish</h1> <span class="material-symbols-outlined">arrow_outward</span>
                     </div>
                 </a>
             </div>
-            <div class="explore-card" onclick="" ontouchstart="">
-                <img src="assets/images/bird2.png" alt="test card" class="explore-image">
-                <a class="explore-button" href="https://jovian.wang/bird/" target="_blank">
-                    <div class="explore-title">
+            <div class="projects-card" onclick="" ontouchstart="">
+                <img src="assets/images/bird2.png" alt="test card" class="projects-image">
+                <a class="projects-button" href="https://jovian.wang/bird/" target="_blank">
+                    <div class="projects-title">
                         <h1>bird</h1> <span class="material-symbols-outlined">arrow_outward</span>
                     </div>
                 </a>
             </div>
-            <div class="explore-card" onclick="" ontouchstart="">
-                <img src="assets/images/snowboard.png" alt="test card" class="explore-image">
-                <a class="explore-button" href="https://jovian.wang/snowboard.html" target="_blank">
-                    <div class="explore-title">
+            <div class="projects-card" onclick="" ontouchstart="">
+                <img src="assets/images/snowboard.png" alt="test card" class="projects-image">
+                <a class="projects-button" href="https://jovian.wang/snowboard.html" target="_blank">
+                    <div class="projects-title">
                         <h1>snowboard</h1> <span class="material-symbols-outlined">arrow_outward</span>
                     </div>
                 </a>
             </div>
-            <div class="explore-card" onclick="" ontouchstart="">
-                <img src="assets/images/wheel.png" alt="test card" class="explore-image">
-                <a class="explore-button" href="https://jovian.wang/wheel/" target="_blank">
-                    <div class="explore-title">
+            <div class="projects-card" onclick="" ontouchstart="">
+                <img src="assets/images/wheel.png" alt="test card" class="projects-image">
+                <a class="projects-button" href="https://jovian.wang/wheel/" target="_blank">
+                    <div class="projects-title">
                         <h1>wheel</h1> <span class="material-symbols-outlined">arrow_outward</span>
                     </div>
                 </a>
             </div>
-            <div class="explore-card" onclick="" ontouchstart="">
-                <img src="assets/images/vandyhacks.jpg" alt="test card" class="explore-image">
-                <a class="explore-button" href="https://vandyhacks.org/" target="_blank">
-                    <div class="explore-title">
+            <div class="projects-card" onclick="" ontouchstart="">
+                <img src="assets/images/vandyhacks.jpg" alt="test card" class="projects-image">
+                <a class="projects-button" href="https://vandyhacks.org/" target="_blank">
+                    <div class="projects-title">
                         <h1>vandyhacks</h1> <span class="material-symbols-outlined">arrow_outward</span>
                     </div>
                 </a>
             </div>
-            <div class="explore-card" onclick="" ontouchstart="">
-                <img src="assets/images/carleton.png" alt="test card" class="explore-image">
-                <a class="explore-button" href="assets/CarletonSQRI.pdf" target="_blank">
-                    <div class="explore-title">
+            <div class="projects-card" onclick="" ontouchstart="">
+                <img src="assets/images/carleton.png" alt="test card" class="projects-image">
+                <a class="projects-button" href="assets/CarletonSQRI.pdf" target="_blank">
+                    <div class="projects-title">
                         <h1>beef</h1> <span class="material-symbols-outlined">arrow_outward</span>
                     </div>
                 </a>

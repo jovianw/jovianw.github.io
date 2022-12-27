@@ -2,7 +2,7 @@
 const gradient = document.getElementById('navbar-background')
 const selector = document.getElementById('navbar-selector')
 const about = document.getElementById('about')
-const explore = document.getElementById('explore')
+const explore = document.getElementById('projects')
 
 function selectAbout() {
 	selector.style.left = '2px';
@@ -11,7 +11,7 @@ function selectAbout() {
     gradient.style.opacity = '0';
 }
 
-function selectExplore() {
+function selectProjects() {
     selector.style.left = '92px';
     about.style.left = '-100%';
     explore.style.left = '0';
@@ -51,7 +51,7 @@ window.onload = function() {
     if (screen.availWidth > 600) {
         resizeInternalText({element: document.getElementById('about-summary')})
         pSize = window.getComputedStyle(document.getElementById('about-resize'), null).getPropertyValue('font-size');
-        document.querySelectorAll('p').forEach(e => e.style.fontSize = pSize);
+        document.querySelectorAll('.resizable').forEach(e => e.style.fontSize = pSize);
     }
 };
 
