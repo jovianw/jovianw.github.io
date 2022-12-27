@@ -299,45 +299,39 @@ h1 {
     margin-bottom: 8px;
 }
 
+.about-social-icons--link i {
+    vertical-align: middle;
+    width: 1.5em;
+}
+
+.about-social-icons--link p {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 100% !important;
+    padding: 0 0.3em;
+}
+
 .about-social-icons--link {
-    color: var(--lightest-color);
-    font-size: 150%;
+    background-color: var(--lightest-color);
     transition: 0.1s ease-in;
+    text-decoration: none;
+    padding-top: 0.2em;
+    height: 1.5em;
+    font-weight: bolder;
+    color: var(--darker-color);
+    text-align: center;
+    border-radius: 3px;
 }
 
 .about-social-icons--link:hover {
-    color: var(--highlight-color);
-}
-
-.about-social {
-    display: flex;
-    column-gap: 16px;
-}
-
-.about-button-container {
-    /* height: 23px; */
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--lightest-color);
-    padding: 0 1ch;
-    border-radius: 12px;
-    margin: 0.2em 0 0.25em 0;
-    cursor: pointer;
-}
-
-.about-button-container:hover {
     background-color: var(--highlight-color);
 }
 
-.about-button {
-    text-decoration: none;
-    font-size: 87.5%;
-    font-weight: bold;
-    color: var(--darker-color);
+.about-social {
+    margin-top: 0.3em;
+    display: flex;
+    column-gap: 1ch;
 }
-
 
 @media screen and (max-width: 600px) {
     #about-hero {
