@@ -50,10 +50,12 @@ const resizeNameMobile = ({element}) => {
     }
 }
 
-window.onload = resizeWindow;
-window.onresize = resizeWindow;
+const appHeight = () => {
+    const doc = document.documentElement
+    doc.style.setProperty('--app-height', `${window.innerHeight}px`)
+}
 
-function resizeWindow() {
+const resizeWindow = () => {
     if (window.innerWidth / window.innerHeight > 46 / 39) {
         resizeName({element: document.getElementById('about-name')});
     } else {
@@ -67,4 +69,9 @@ function resizeWindow() {
     for (let i = 0; i < timelineNames.length; i++) {
         resizeInternalText({element: timelineNames[i]});
     }
+    appHeight();
 }
+
+window.onload = resizeWindow;
+window.onresize = resizeWindow;
+

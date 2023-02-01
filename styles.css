@@ -6,6 +6,7 @@
     --darker-color: #141414;
     --lightest-color: #fff;
     --lighter-color: rgb(230, 240, 241);
+    --inner-height: 100%; /* need for fixing viewport problems */
 }
 
 * {
@@ -33,7 +34,7 @@ body {
     position: relative;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
     body, html {
         animation: open-body 0s linear 3.5s 1 forwards;
 
@@ -45,13 +46,14 @@ body {
             overflow-y: auto;
         }
     }
-}
+} */
 
 
 /* Introduction */
 
 .introduction {
     height: 100vh;
+    height: var(--inner-height);
     width: 100vw;
     background-color: var(--lightest-color);
     display: grid;
@@ -76,6 +78,7 @@ body {
     display: block;
     margin-bottom: 5px;
     height: 100%;
+    height: var(--inner-height);
     /* border: 1px solid red; */
     animation: spin-words 2s ease 0.2s 1 forwards;
 }
@@ -120,6 +123,7 @@ body {
 #about {
     overflow: hidden;
     height: 100vh;
+    height: var(--inner-height);
     width: 100%;
     -ms-overflow-style: none;
 }
@@ -305,6 +309,8 @@ body {
     border-radius: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     position: relative;
+    z-index: 1;
+    position: relative;
 }
 
 .timeline-image {
@@ -350,6 +356,7 @@ body {
     background-color: rgba(0, 0, 0, 0.7);
     opacity: 0;
     transition: var(--card-transition);
+    will-change: opacity;
 }
 
 .timeline-button {
@@ -412,6 +419,16 @@ body {
     scroll-snap-align: start;
 }
 
+@media screen and (max-aspect-ratio: 46/39) {
+    body {
+        scroll-snap-type: none;
+    }
+    
+    .scroll-snappable {
+        scroll-snap-align: none;
+    }
+}
+
 
 
 .bottom-text {
@@ -430,7 +447,12 @@ body {
 }
 
 
-
+button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: var(--darker-color);
+}
 
 
 
@@ -461,9 +483,4 @@ body {
     }
 }
 
-button {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    color: var(--darker-color);
-} */
+ */
