@@ -1,23 +1,4 @@
-// Navbar
-const gradient = document.getElementById('navbar-background')
-const selector = document.getElementById('navbar-selector')
-const about = document.getElementById('about')
-const explore = document.getElementById('projects')
-
-function selectAbout() {
-	selector.style.left = '2px';
-    about.style.left = '0';
-    explore.style.left = '100%';
-    gradient.style.opacity = '0';
-}
-
-function selectProjects() {
-    selector.style.left = '92px';
-    about.style.left = '-100%';
-    explore.style.left = '0';
-    gradient.style.opacity = '1';
-}
-
+// 2023
 
 // About
 const isOverflown = ({ clientHeight, scrollHeight }) => scrollHeight > clientHeight
@@ -87,23 +68,3 @@ function resizeWindow() {
         resizeInternalText({element: timelineNames[i]});
     }
 }
-
-// window.onscroll = function() {
-//     console.log(window.scrollY)
-// }
-
-
-// // Timeline
-// const timeline = document.getElementById("timeline-scroller");
-
-// if (screen.availWidth > 600) {
-//     document.getElementById('timeline-scroller').addEventListener("wheel", function (e) {
-//         // console.log(e.target.classList)
-//         e.preventDefault();
-//         if (e.deltaY > 0) {
-//             timeline.scrollLeft += 300;
-//         } else {
-//             timeline.scrollLeft -= 300;
-//         }
-//     });
-// }
