@@ -26,312 +26,212 @@
         </div>
     </div>
 
-    <!-- Menu -->
-    <nav class="navbar">
-        <h3>Jovian Wang</h3>
-        <div id="navbar-container">
-            <div id="navbar-background"></div>
-            <div id="navbar-selector"></div>
-            <button type="button" class="navbar-button" onclick="selectAbout()" ontouchstart="selectAbout()">About</button>
-            <button type="button" class="navbar-button" onclick="selectProjects()" ontouchstart="selectProjects()">Projects</button>
-        </div>
-    </nav>
-
     <!-- About -->
-    <div id="about">
+    <div id="about" class="scroll-snappable">
         <div id="about-hero">
-            <div class="about-img--container">
-                <img src="assets/graduation_1.jpg" alt="Jovian Wang" id="about-img">
-            </div>
-            <div class="about-summary--container">
-                <div id="about-summary">
+            <img src="assets/graduation_3.png" alt="Jovian Wang" id="about-img">
+            <div id="about-name-container">
+                <div id="about-name">
                     <h1>JOVIAN WANG</h1>
-                    <h2>Computer Science, Economics, and Data Science</h2>
-                    <p id="about-resize" class="resizable">Hello! I'm an undergraduate-level student at Vanderbilt University, studying computer science, economics, and data science. I'm also a tennis player, digital artist, and snowboard enthusiast.</p>
+                </div>
+                <div class="about-name-mobile">
+                    <h1>JOVIAN</h1>
+                </div>
+                <div class="about-name-mobile">
+                    <h1>WANG</h1>
                 </div>
             </div>
-            <div class="about-info--container">
-                <div id="about-info">
-                    <p class="resizable">jovian.l.wang@vanderbilt.edu</p>
-                    <p class="resizable">U.S. Citizen</p>
-                    <div class="about-social">
-                        <a href="mailto:jovian.l.wang@vanderbilt.edu?subject=Lets connect!" class="about-social-icons--link" target="_blank">
-                            <i class="fas fa-envelope"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/jovianwang/" class="about-social-icons--link" target="_blank">
-                            <i class="fab fa-linkedin-in"></i>
-                        </a>
-                        <a href="assets/JovianWang_Resume.pdf" class="about-social-icons--link" target="_blank">
-                            <p>resume pdf</p>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Timeline Section -->
-        <div id="timeline-scroller" class="horizontal-scroller">
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/scuffedfish.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>ScuffedFish: A Minimax & Alpha-Beta Pruning Chess AI</h3>
-                        <h4>2022</h4>
-                    </div>
-                    <p class="resizable">Developed and analyzed a custom in-browser chess engine using minimax and alpha-beta pruning. Determined that a minimax algorithm that considers positional utility wins more against one that only evaluates piece values and is able to develop the board with common chess openings. </p>
-                    <form action="https://jovian.wang/chessbot/" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>ScuffedFish</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/networks.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Explaining Species Endangerment Through Network Analysis</h3>
-                        <h4>2022</h4>
-                    </div>
-                    <p class="resizable">Using the IUCN RedList API and Greater Antillean coral reef guild-prey and guild-species datasets, examined the correlations between species endangerment levels and various network metrics. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/snowboard.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Snowboard, A Micro-Website</h3>
-                        <h4>2022</h4>
-                    </div>
-                    <p class="resizable">A WIP personal project. Created a Useless Web-esque decorative website to play as a snowboarder. Currently curious, useless, un-optimized, and satisfying.</p>
-                    <form action="https://jovian.wang/old_website_v2/snowboard.html" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>Snowboard</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/vandyhacks.jpg" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>VandyHacks Design Board</h3>
-                        <h4>2022</h4>
-                    </div>
-                    <p class="resizable">Oversee the designs for Vanderbilt University’s 2022 ninth annual hackathon website and the VandyHack’s cross-year mobile website. Designed and installed on-site hackathon and event decorations.</p>
-                    <form action="https://vandyhacks.org/" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>VandyHacks</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/a2pg.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Software Development Intern, Ann Arbor Pharmacometrics Group</h3>
-                        <h4>2022</h4>
-                    </div>
-                    <p class="resizable">Led a three-intern team for the full stack development of an internal analysis tool using R Shiny and C++. The product will
-                        be used amongst company pharmacometricians to allow customization of drug analysis tables, listings, and figures, and to
-                        reduce downtime.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/bird.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Bird, A Micro-Website</h3>
-                        <h4>2022</h4>
-                    </div>
-                    <p class="resizable">A personal project. Experimented with JavaScript to create a fun little website.</p>
-                    <form action="https://jovian.wang/bird/" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>Bird</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/vanderbilt.jpg" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Teaching Assistant, Vanderbilt University Digital Systems</h3>
-                        <h4>2021-2022</h4>
-                    </div>
-                    <p class="resizable">Tutored 33 students in logic, organization, and assembly language programming. Aided in the transition to an online
-                        question-and-answer platform for students to anonymously seek coursework help. Assisted professor in grading homework and exams. Standardized scoring and improved answer keys for future use.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/websiteV2.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Jovian.Wang V2</h3>
-                        <h4>2021</h4>
-                    </div>
-                    <p class="resizable">Rebuilt this website from the ground up, picking up skills html, css, and javascript.</p>
-                    <form action="https://jovian.wang/old_website_v2/resume.html" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>Jovian.Wang V2</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/amador.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Machine Learning Intern, Amador Bioscience</h3>
-                        <h4>2021</h4>
-                    </div>
-                    <p class="resizable">Used R and XGBoost to build a classifier on research patient data and determine feature importance. Regularly reported analysis
-                        methods and results to company executives. Results were used to determine drug efficacy and guide future research
-                        objectives.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/websiteV1.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Jovian.Wang V1</h3>
-                        <h4>2021</h4>
-                    </div>
-                    <p class="resizable">Built and deployed the first version of this website using Jekyll themes and GitHub Pages.</p>
-                    <form action="https://jovian.wang/old_website/" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>Jovian.Wang V1</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/robotics.jfif" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Vanderbilt Robotics Camera Sub-Team</h3>
-                        <h4>2021</h4>
-                    </div>
-                    <p class="resizable">Worked with Camera Sub-team to implement robot vision and compete in the NASA Lunabotics Competition.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/vanderbilt.jpg" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>Vanderbilt University</h3>
-                        <h4>2020-2024</h4>
-                    </div>
-                    <p class="resizable">Candidate for BS in Computer Science, BA in Economics.</p> 
-                    <p class="resizable">Candidate for minor in Data Science.</p> 
-                    <p class="resizable">Relevant Coursework: Data Structures & Software Design, Discrete Structures & Algorithms, Digital Systems & Operating Systems, Network Analysis, Linear Algebra, Probability and Statistics for Engineering, Data Science, Artificial Intelligence.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/yygs.jpg" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>An Insight into China’s Investments in Kenya, Yale Young Global Scholars</h3>
-                        <h4>2019</h4>
-                    </div>
-                    <p class="resizable">Conducted and presented a case study of China-Kenya relations and the influence of foreign aid on state sovereignty. Highlighted the expanding economic influence of China upon third-world countries and its cultural, political, and long-term impact.</p>
-                </div>
-            </div>
-            <div class="timeline-card" onclick="" ontouchstart="">
-                <img src="assets/images/carleton.png" alt="test card" class="timeline-image">
-                <div class="timeline-text">
-                    <div class="timeline-title">
-                        <h3>What’s Your Beef: The Effect of Visual Representation on Framing, SQRI</h3>
-                        <h4>2018</h4>
-                    </div>
-                    <p class="resizable">Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon
-                        MTurk experiment on consumer ratings and a 2-by-3 analysis of variance on the data.</p>
-                    <form action="assets/CarletonSQRI.pdf" target="_blank">
-                        <button type="submit" class="timeline-button">
-                            <p>What's Your Beef</p> <span class="material-symbols-outlined">arrow_outward</span>
-                        </button>
-                    </form>
+            <div id="about-summary">
+                <h2>Computer Science, Economics, and Data Science</h2>
+                <p id="about-resize" class="resizable">Hello! I'm an undergraduate-level student at Vanderbilt University, studying computer science, economics, and data science. I'm also a tennis player, digital artist, and snowboard enthusiast.</p>
+                <p class="resizable">jovian.l.wang@vanderbilt.edu</p>
+                <div class="about-social">
+                    <a href="mailto:jovian.l.wang@vanderbilt.edu?subject=Lets connect!" class="about-social-icons--link" target="_blank">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/jovianwang/" class="about-social-icons--link" target="_blank">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="assets/JovianWang_Resume.pdf" class="about-social-icons--link" target="_blank">
+                        <p>resume</p>
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="projects">
-        <div class="projects-hero">
-            <h1>Curious Creations</h1>
-            <h2>This is where I'll be putting web-accessible stuff. Beware: some are just experimental websites with no real use.</h2>
+    <!-- Timeline Section -->
+    <div id="timeline">
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/scuffedfish.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>ScuffedFish: A Minimax & Alpha-Beta Pruning Chess AI</h3>
+                <h4>2022</h4>
+                <p class="resizable">Developed and analyzed a custom client-side JavaScript chess engine using minimax and alpha-beta pruning. Assessed the performance of different utility functions. Determined that the addition of positional utility increases win rate as well as the occurrence of common chess openings.</p>
+                <form class="timeline-form" action="https://jovian.wang/chessbot/" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>ScuffedFish</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
+            </div>
         </div>
-        <div class="vertical-line"></div>
-        <div id="projects-scroller" class="vertical-scroller">
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/scuffedfish2.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://jovian.wang/chessbot/" target="_blank">
-                    <div class="projects-title">
-                        <h1>scuffedfish</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/networks.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Explaining Species Endangerment Through Network Analysis</h3>
+                <h4>2022</h4>
+                <p class="resizable">Using the IUCN RedList API and Greater Antillean coral reef guild-prey and guild-species datasets, examined the correlations between species endangerment levels and various network metrics. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species.</p>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/bird2.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://jovian.wang/bird/" target="_blank">
-                    <div class="projects-title">
-                        <h1>bird</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/snowboard.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Snowboard, A Micro-Website</h3>
+                <h4>2022</h4>
+                <p class="resizable">A WIP personal project. Created a Useless Web-esque decorative website to play as a snowboarder. Currently curious, useless, un-optimized, and satisfying.</p>
+                <form class="timeline-form" action="https://jovian.wang/old_website_v2/snowboard.html" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>Snowboard</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/snowboard.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://jovian.wang/old_website_v2/snowboard.html" target="_blank">
-                    <div class="projects-title">
-                        <h1>snowboard</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/vandyhacks.jpg" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>VandyHacks Design Board</h3>
+                <h4>2022</h4>
+                <p class="resizable">Led the design of Vanderbilt University’s ninth annual hackathon website, designed VandyHack’s cross-year mobile website, and coordinated on-site environmental installations. Collaborated with the marketing board and other student groups to attracted hundreds more participants to VandyHacks IX than the hackathon of the previous year.</p>
+                <form class="timeline-form" action="https://vandyhacks.org/" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>VandyHacks</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/websiteV2.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://jovian.wang/old_website_v2/" target="_blank">
-                    <div class="projects-title">
-                        <h1>jovian.wang v2</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/a2pg.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Software Development Intern, Ann Arbor Pharmacometrics Group</h3>
+                <h4>2022</h4>
+                <p class="resizable">Led a three-intern team for the full stack development of a NCA (non-compartmental analysis) tool using R Shiny and C++. Improved company efficiency by automating the production of NCA tables, listings, and figures. Implemented a web interface to enable analysis customization with a simple user workflow. Established unit test and documentation structures for future development.</p>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/wheel.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://jovian.wang/wheel/" target="_blank">
-                    <div class="projects-title">
-                        <h1>wheel</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/bird.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Bird, A Micro-Website</h3>
+                <h4>2022</h4>
+                <p class="resizable">A personal project. Experimented with JavaScript to create a fun little website.</p>
+                <form class="timeline-form" action="https://jovian.wang/bird/" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>Bird</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/vandyhacks.jpg" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://vandyhacks.org/" target="_blank">
-                    <div class="projects-title">
-                        <h1>vandyhacks</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/vanderbilt.jpg" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Teaching Assistant, Vanderbilt University Digital Systems</h3>
+                <h4>2021-2022</h4>
+                <p class="resizable">Tutored 33 students in logic, organization, and assembly language programming. Facilitated the transition to an online question-and-answer platform for students to anonymously seek coursework help. Assisted professor in grading homework and exams. Standardized scoring and refined answer keys for future use.</p>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/websiteV1.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="https://jovian.wang/old_website/" target="_blank">
-                    <div class="projects-title">
-                        <h1>jovian.wang v1</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/websiteV2.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Jovian.Wang V2</h3>
+                <h4>2021</h4>
+                <p class="resizable">Rebuilt this website from the ground up, picking up skills html, css, and javascript.</p>
+                <form class="timeline-form" action="https://jovian.wang/old_website_v2/resume.html" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>Jovian.Wang V2</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
             </div>
-            <div class="projects-card" onclick="" ontouchstart="">
-                <img src="assets/images/carleton.png" alt="test card" class="projects-image">
-                <a class="projects-button" href="assets/CarletonSQRI.pdf" target="_blank">
-                    <div class="projects-title">
-                        <h1>beef</h1> <span class="material-symbols-outlined">arrow_outward</span>
-                    </div>
-                </a>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/amador.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Machine Learning Intern, Amador Bioscience</h3>
+                <h4>2021</h4>
+                <p class="resizable">Used R and XGBoost to construct various machine learning models of drug efficacy from subject data and determine subject feature importance. Reported results to company executives. Guided future research objectives by identifying key features that impact drug efficacy.</p>
+            </div>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/websiteV1.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Jovian.Wang V1</h3>
+                <h4>2021</h4>
+                <p class="resizable">Built and deployed the first version of this website using Jekyll themes and GitHub Pages.</p>
+                <form class="timeline-form" action="https://jovian.wang/old_website/" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>Jovian.Wang V1</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
+            </div>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/robotics.jfif" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Vanderbilt Robotics Camera Sub-Team</h3>
+                <h4>2021</h4>
+                <p class="resizable">Worked with Camera Sub-team to implement robot vision and compete in the NASA Lunabotics Competition.</p>
+            </div>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/vanderbilt.jpg" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>Vanderbilt University</h3>
+                <h4>2020-2024</h4>
+                <p class="resizable">Bachelor of Science in Computer Science, Bachelor of Arts in Economics.</p> 
+                <p class="resizable">Minor in Data Science.</p> 
+                <p class="resizable">Data Structures & Software Design, Discrete Structures & Algorithms, Digital Systems & Operating Systems, Network Analysis, Data Science, Artificial Intelligence, Machine Learning, Principles of Software Engineering.</p>
+            </div>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/yygs.jpg" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>An Insight into China’s Investments in Kenya, Yale Young Global Scholars</h3>
+                <h4>2019</h4>
+                <p class="resizable">Conducted and presented a case study of China-Kenya relations and the influence of foreign aid on state sovereignty. Highlighted the expanding economic influence of China upon third-world countries and its cultural, political, and long-term impact.</p>
+            </div>
+        </div>
+        <div class="timeline-card" onclick="" ontouchstart="">
+            <img src="assets/images/carleton.png" alt="test card" class="timeline-image">
+            <div class="timeline-bg"></div>
+            <div class="timeline-text">
+                <h3>What’s Your Beef: The Effect of Visual Representation on Framing, SQRI</h3>
+                <h4>2018</h4>
+                <p class="resizable">Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon
+                    MTurk experiment on consumer ratings and a 2-by-3 analysis of variance on the data.</p>
+                <form action="assets/CarletonSQRI.pdf" target="_blank">
+                    <button type="submit" class="timeline-button">
+                        <p>What's Your Beef</p> <span class="material-symbols-outlined">arrow_outward</span>
+                    </button>
+                </form>
             </div>
         </div>
     </div>
 
-    <p class="bottom-text">Copyright © 2022 Jovian Wang</p>
+    <!-- <div class="footer">
+        <img src="assets/favicon.png" alt="Jovian Wang" class="logo"> -->
+        <p class="bottom-text">Copyright © 2022 Jovian Wang</p>
+    <!-- </div> -->
 
     <script src="app.js"></script>
 </body>

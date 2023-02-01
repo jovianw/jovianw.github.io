@@ -22,7 +22,7 @@ function selectProjects() {
 // About
 const isOverflown = ({ clientHeight, scrollHeight }) => scrollHeight > clientHeight
 
-const resizeInternalText = ({ element, minFontSize = 10, unit = 'px' }) => {
+const resizeInternalText = ({ element, minFontSize = 8, unit = 'px' }) => {
     const childSizes = []
     const children = element.children
     for (const child of children) {
@@ -47,28 +47,63 @@ const resizeInternalText = ({ element, minFontSize = 10, unit = 'px' }) => {
     }
 }
 
-window.onload = function() {
-    if (screen.availWidth > 600) {
-        resizeInternalText({element: document.getElementById('about-summary')})
-        pSize = window.getComputedStyle(document.getElementById('about-resize'), null).getPropertyValue('font-size');
-        document.querySelectorAll('.resizable').forEach(e => e.style.fontSize = pSize);
+const resizeName = ({element}) => {
+    let text = element.firstElementChild;
+    let fontSize = 300; 
+    text.style.fontSize = `${ fontSize }px`;
+    while (element.clientHeight > fontSize) {
+        fontSize -= 1
+        text.style.fontSize = `${ fontSize }px`;
     }
-};
-
-
-
-
-// Timeline
-const timeline = document.getElementById("timeline-scroller");
-
-if (screen.availWidth > 600) {
-    document.getElementById('timeline-scroller').addEventListener("wheel", function (e) {
-        // console.log(e.target.classList)
-        e.preventDefault();
-        if (e.deltaY > 0) {
-            timeline.scrollLeft += 300;
-        } else {
-            timeline.scrollLeft -= 300;
-        }
-    });
+    console.log(element.clientHeight)
+    console.log(fontSize)
 }
+
+const resizeNameMobile = ({element}) => {
+    let text = element.firstElementChild;
+    let fontSize = 300; 
+    text.style.fontSize = `${ fontSize }px`;
+    while (element.scrollWidth > element.clientWidth) {
+        fontSize -= 1
+        text.style.fontSize = `${ fontSize }px`;
+    }
+}
+
+window.onload = resizeWindow;
+window.onresize = resizeWindow;
+
+function resizeWindow() {
+    if (window.innerWidth / window.innerHeight > 46 / 39) {
+        resizeName({element: document.getElementById('about-name')});
+    } else {
+        const mobileNames = document.getElementsByClassName('about-name-mobile');
+        for (let i = 0; i < mobileNames.length; i++) {
+            resizeNameMobile({element: mobileNames[i]});
+        }
+    }
+    resizeInternalText({element: document.getElementById('about-summary')});
+    const timelineNames = document.getElementsByClassName('timeline-text');
+    for (let i = 0; i < timelineNames.length; i++) {
+        resizeInternalText({element: timelineNames[i]});
+    }
+}
+
+// window.onscroll = function() {
+//     console.log(window.scrollY)
+// }
+
+
+// // Timeline
+// const timeline = document.getElementById("timeline-scroller");
+
+// if (screen.availWidth > 600) {
+//     document.getElementById('timeline-scroller').addEventListener("wheel", function (e) {
+//         // console.log(e.target.classList)
+//         e.preventDefault();
+//         if (e.deltaY > 0) {
+//             timeline.scrollLeft += 300;
+//         } else {
+//             timeline.scrollLeft -= 300;
+//         }
+//     });
+// }
