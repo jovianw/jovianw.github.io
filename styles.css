@@ -432,12 +432,13 @@ body {
 
 
 .bottom-text {
-    position: fixed;
-    bottom: 10px;
+    position: relative;
+    margin: 15px 0;
     left: 50%;
     transform: translateX(-50%);
     opacity: 0.3;
     font-size: smaller;
+    width: fit-content;
 }
 
 @media screen and (max-width: 350px) {
