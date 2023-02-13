@@ -424,7 +424,7 @@ body {
         scroll-snap-type: none;
     }
     
-    .scroll-snappable {
+    .scroll-snappable { 
         scroll-snap-align: none;
     }
 }
