@@ -34,6 +34,14 @@ body {
     position: relative;
 }
 
+.selectable {
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
+
 /* @media screen and (max-width: 600px) {
     body, html {
         animation: open-body 0s linear 3.5s 1 forwards;
