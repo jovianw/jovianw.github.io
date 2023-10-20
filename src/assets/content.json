@@ -124,7 +124,7 @@
       "title": "What\u2019s Your Beef: The Effect of Visual Representation on Framing, SQRI",
       "year": "2018",
       "description": "Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon MTurk experiment on consumer ratings and a 2-by-3 analysis of variance on the data.",
-      "link": { "text": "What's Your Beef", "url": "assets/CarletonSQRI.pdf" }
+      "link": { "text": "What's Your Beef", "url": "/CarletonSQRI.pdf" }
     }
   ]
 }

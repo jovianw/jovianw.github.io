@@ -1,0 +1,41 @@
+/************ SCROLLING **********/
+body {
+  scroll-snap-type: y proximity;
+}
+
+.scroll-snappable {
+  scroll-snap-align: start;
+}
+
+@media screen and (max-aspect-ratio: 46/39) {
+  body {
+      scroll-snap-type: none;
+  }
+  
+  .scroll-snappable { 
+      scroll-snap-align: none;
+  }
+}
+
+button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  color: var(--darker-color);
+}
+
+.bottom-text {
+  position: relative;
+  margin: 15px 0;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0.3;
+  font-size: smaller;
+  width: fit-content;
+}
+
+@media screen and (max-width: 350px) {
+  .bottom-text {
+      font-size: 0.5em;
+  }
+}

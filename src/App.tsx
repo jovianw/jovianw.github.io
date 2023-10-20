@@ -1,7 +1,34 @@
 import About from "./components/About";
-import { useEffect } from "react";
+import "./App.css";
+import { useLayoutEffect, useState, useEffect } from "react";
+import Timeline from "./components/Timeline";
+
+function useWindowSize() {
+  const [size, setSize] = useState([0, 0]);
+  useLayoutEffect(() => {
+    function updateSize() {
+      setSize([window.innerWidth, window.innerHeight]);
+    }
+    window.addEventListener("resize", updateSize);
+    updateSize();
+    return () => window.removeEventListener("resize", updateSize);
+  }, []);
+  return size;
+}
 
 function App() {
+  // Update on window change
+  const [width, height] = useWindowSize();
+  width;
+  height;
+
+  const [aboutReady, setAboutReady] = useState(false);
+  const [timelineReady, setTimelineReady] = useState(false);
+
+  if (aboutReady && timelineReady) {
+    console.log("ready!");
+  }
+
   const isOverflown = ({
     clientHeight,
     scrollHeight,
@@ -28,8 +55,10 @@ function App() {
       let fontSize = parseFloat(style);
       childSizes.push(fontSize);
     }
-
-    let overflow = isOverflown(element);
+    let overflow = isOverflown({
+      clientHeight: element.clientHeight,
+      scrollHeight: element.scrollHeight,
+    });
     let sizePercent = 100;
     let hitMin = false;
     while (overflow && !hitMin) {
@@ -50,14 +79,23 @@ function App() {
   useEffect(() => {
     const elements = document.getElementsByClassName("resizable");
     for (let i = 0; i < elements.length; i++) {
-      console.log("Resizing", elements[i]);
       resizeInternalText({ element: elements[i] });
     }
   });
 
   return (
     <>
-      <About />
+      <About
+        handleOnReady={() => {
+          setAboutReady(true);
+        }}
+      />
+      <Timeline
+        handleOnReady={() => {
+          setTimelineReady(true);
+        }}
+      />
+      <p className="bottom-text">Copyright © 2023 Jovian Wang</p>
     </>
   );
 }

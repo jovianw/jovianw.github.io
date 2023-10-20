@@ -86,8 +86,7 @@
 }
 
 
-.about-social-icons--link i {
-    vertical-align: middle;
+.about-social-icons--link svg {
     width: 1.5em;
 }
 
