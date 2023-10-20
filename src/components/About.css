@@ -5,6 +5,7 @@
     height: var(--inner-height);
     width: 100%;
     -ms-overflow-style: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 12px;
 }
 
 #about-hero {

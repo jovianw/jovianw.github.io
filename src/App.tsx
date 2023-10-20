@@ -2,6 +2,7 @@ import About from "./components/About";
 import "./App.css";
 import { useLayoutEffect, useState, useEffect } from "react";
 import Timeline from "./components/Timeline";
+import Overlay from "./components/Overlay";
 
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
@@ -85,6 +86,7 @@ function App() {
 
   return (
     <>
+      {(!aboutReady || !timelineReady) && <Overlay label="Loading..." />}
       <About
         handleOnReady={() => {
           setAboutReady(true);

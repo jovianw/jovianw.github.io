@@ -1,5 +1,5 @@
 /************ SCROLLING **********/
-body {
+#root {
   scroll-snap-type: y proximity;
 }
 
