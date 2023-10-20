@@ -1,0 +1,45 @@
+:root {
+    --highlight-color: rgb(109, 175, 199);
+    --highlight-color-2: #f77062;
+    --darker-color: #141414;
+    --lightest-color: #fff;
+    --lighter-color: rgb(230, 240, 241);
+    --inner-height: 100%; /* need for fixing viewport problems */
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif
+} 
+
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+    -khtml-user-select: none; /* Konqueror HTML */
+    -moz-user-select: none; /* Old versions of Firefox */
+    -ms-user-select: none; /* Internet Explorer/Edge */
+    user-select: none; /* Non-prefixed version, currently
+                            supported by Chrome, Edge, Opera and Firefox */
+}
+
+#root {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+.selectable {
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}

@@ -1,0 +1,165 @@
+/* About */
+#about {
+    overflow: hidden;
+    height: 100vh;
+    height: var(--inner-height);
+    width: 100%;
+    -ms-overflow-style: none;
+}
+
+#about-hero {
+    padding: 0 15%;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#about-img {
+    z-index: 9;
+    position: relative;
+    top: 10%;
+    margin-right: -5%;
+    height: 90%;
+    float: right;
+    shape-outside: url(/assets/graduation_3.png);
+}
+
+#about-name {
+    width: 100%;
+    overflow: hidden;
+    font-size: 150px;
+    position: absolute;
+    bottom: 0;
+    color: var(--darker-color);
+    line-height: 0.8;
+    text-align: center;
+}
+
+#about-name-container h1 {
+    user-select: none;
+    line-height: 0.8;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 122px;
+}
+
+#about-name-mobile-container {
+    position: absolute;
+    bottom: clamp(0px, calc((100vh - 100vw) / 5), 30vw);
+    width: 100%;
+    overflow: hidden;
+}
+
+.about-name-mobile {
+    display: block;
+    width: 100%;
+    overflow: hidden;
+    font-size: 150px;
+    color: var(--darker-color);
+    line-height: 0.8;
+    text-align: center;
+}
+
+#about-name-container {
+    height: 40%;
+    position: relative;
+    margin: 0 -1%;
+    width: 100%;
+}
+
+#about-summary {
+    padding-top: 6px;
+    max-height: 45%;
+}
+
+#about-summary h2 {
+    font-size: 24px;
+    font-weight: normal;
+}
+
+#about-summary p {
+    margin-top: 24px;
+}
+
+
+.about-social-icons--link i {
+    vertical-align: middle;
+    width: 1.5em;
+}
+
+.about-social-icons--link p {
+    vertical-align: middle;
+    display: inline-block;
+    line-height: 100% !important;
+    padding: 0 0.3em;
+    margin: 0 !important;
+}
+
+.about-social-icons--link {
+    background-color: var(--darker-color);
+    transition: 0.1s ease-in;
+    text-decoration: none;
+    padding-top: 0.2em;
+    height: 1.5em;
+    font-weight: bolder;
+    color: var(--lightest-color);
+    text-align: center;
+    border-radius: 3px;
+}
+
+.about-social-icons--link:hover {
+    background-color: var(--highlight-color);
+}
+
+.about-social {
+    margin-top: 0.3em;
+    display: flex;
+    column-gap: 1ch;
+}
+
+@media screen and (max-aspect-ratio: 29/20) {
+    #about-img {
+        z-index: 9;
+        position: relative;
+        top: 10%;
+        margin-right: -30%;
+        height: 90%;
+        float: right;
+        shape-outside: url(/graduation_3.png);
+    }
+}
+
+@media screen and (max-aspect-ratio: 46/39) {
+    #about-img {
+        position: absolute;
+        top: initial;
+        bottom: 40%;
+        left: 50%;
+        transform: translateX(-50%);
+        height: auto;
+        max-height: 50%;
+        max-width: 70%;
+        float: none;
+        shape-outside: none;
+    }
+
+    #about-name-container {
+        height: 60%;
+    }
+
+    #about-summary p {
+        margin-top: 12px;
+    }
+
+    #about-hero {
+        overflow: hidden;
+    }
+
+    #about-summary {
+        height: 35%;
+    }
+}
