@@ -10,7 +10,7 @@
   }
 }
 
-#signin {
+.signin {
   min-height: 30vh;
   max-height: 200px;
   background-color: var(--darker-color);
@@ -27,7 +27,7 @@
   animation-timing-function: ease;
 }
 
-#signin-container {
+.signin-container {
   display: flex;
   justify-content: center;
   gap: 20px;
@@ -43,7 +43,7 @@
   border: 3px solid var(--highlight-color);
 }
 
-#signin-exit {
+.signin-exit {
   position: absolute;
   top: 1em;
   right: 1em;

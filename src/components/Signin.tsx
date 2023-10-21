@@ -48,9 +48,9 @@ function Signin({ showSignin, setShowSignin }: Props) {
 
   return (
     showSignin && (
-      <div id="signin">
+      <div className="signin">
         <button
-          id="signin-exit"
+          className="signin-exit"
           onClick={() => {
             setShowSignin(false);
           }}
@@ -62,7 +62,7 @@ function Signin({ showSignin, setShowSignin }: Props) {
         ) : (
           <h3>Sign in to comment</h3>
         )}
-        <div id="signin-container">
+        <div className="signin-container">
           <img
             src="/google_logo.png"
             alt="google sign-on"
