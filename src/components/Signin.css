@@ -1,0 +1,66 @@
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+
+  to {
+    transform: translateY(0%);
+    opacity: 1;
+  }
+}
+
+#signin {
+  min-height: 30vh;
+  max-height: 200px;
+  background-color: var(--darker-color);
+  color: var(--lightest-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+  position: absolute;
+  width: 100%;
+  animation-name: slideUp;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
+
+#signin-container {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.signin-img {
+  height: 60px;
+  width: 60px;
+  border-radius: 50%;
+}
+
+.signin-img:hover {
+  border: 3px solid var(--highlight-color);
+}
+
+#signin-exit {
+  position: absolute;
+  top: 1em;
+  right: 1em;
+  background: none;
+  border: none;
+  outline: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  color: var(--lightest-color);
+}
+
+a {
+  text-decoration: underline;
+  font-size: small;
+}
+
+a:hover {
+  color: var(--highlight-color);
+}

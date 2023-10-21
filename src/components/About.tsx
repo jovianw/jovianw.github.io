@@ -5,6 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope } from "@fortawesome/free-solid-svg-icons";
 import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 import { faGithub } from "@fortawesome/free-brands-svg-icons/faGithub";
+import { faFileLines } from "@fortawesome/free-solid-svg-icons";
 
 interface Props {
   handleOnReady: () => void;
@@ -53,7 +54,7 @@ function About({ handleOnReady }: Props) {
               className="about-social-icons--link"
               target="_blank"
             >
-              <p>resume</p>
+              <FontAwesomeIcon icon={faFileLines}></FontAwesomeIcon>
             </a>
           </div>
         </div>

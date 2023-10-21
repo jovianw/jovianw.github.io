@@ -2,7 +2,7 @@
   display: grid;
   grid-auto-flow: row;
   grid-auto-rows: minmax(40vh, 300px);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 30px 30px;
   padding: 50px;
 }
@@ -68,8 +68,9 @@
   transition: 0.1s;
   transition-delay: 0s;
   margin-top: 10px;
+  margin-left: -2px;
   padding: 7px 14px;
-  background: var(--highlight-color);
+  background: var(--lightest-color);
   border: 0;
   outline: none;
   text-align: center;
@@ -80,6 +81,10 @@
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
+}
+
+.timeline-button:hover {
+  background: var(--highlight-color);
 }
 
 .timeline-button span {
@@ -102,4 +107,19 @@
       grid-template-columns: auto;
       padding: 10%;
   }
+  
+  .timeline-button {
+    background: var(--highlight-color);
+  }
+
+  #comments-container {
+    grid-row-start: span 2 !important;
+    grid-row-end: revert !important;
+  }
+}
+
+#comments-container {
+  grid-row-start: 1;
+  grid-row-end: span 3;
+  grid-column-end: -1;
 }
