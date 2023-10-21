@@ -35,7 +35,9 @@ function Timeline({ handleOnReady }: Props) {
           <div className="timeline-text resizable">
             <h3>{card.title}</h3>
             <h4>{card.year}</h4>
-            <p className="resizable">{card.description}</p>
+            <p className="resizable" style={{ whiteSpace: "pre-line" }}>
+              {card.description.split("<br/>").join("\n")}
+            </p>
             {card.link !== undefined && (
               <form
                 className="timeline-form"
