@@ -5,15 +5,24 @@ import { faCircleArrowUp } from "@fortawesome/free-solid-svg-icons";
 import { auth, db } from "../firebase";
 import Signin from "./Signin";
 import { onAuthStateChanged } from "firebase/auth";
-import { collection, addDoc, query, onSnapshot } from "firebase/firestore";
+import {
+  collection,
+  addDoc,
+  query,
+  onSnapshot,
+  orderBy,
+  limit,
+} from "firebase/firestore";
 import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 import CommentsDisplay from "./CommentsDisplay";
 
 export interface CommentDoc {
   body?: string;
   UID?: string;
-  date?: Date;
+  date?: number;
   id: string;
+  pfp?: string;
+  displayName?: string;
 }
 
 function Comments() {
@@ -27,10 +36,12 @@ function Comments() {
   const [isSending, setIsSending] = useState(false);
   // FIREBASE
   const [commentDocs, setCommentDocs] = useState<CommentDoc[]>([]);
+  // Boolean to keep track of when to scroll
+  const [scrollNow, setScrollNow] = useState(false);
 
   // Read firebase
   useEffect(() => {
-    const q = query(collection(db, "comments"));
+    const q = query(collection(db, "comments"), orderBy("date"), limit(30));
     const unsubscribe = onSnapshot(q, (querySnapshot) => {
       let commentsDocsArr: CommentDoc[] = [];
 
@@ -58,7 +69,9 @@ function Comments() {
       await addDoc(collection(db, "comments"), {
         body: text,
         UID: auth.currentUser.uid,
-        date: new Date(),
+        date: new Date().getTime(),
+        pfp: auth.currentUser.photoURL,
+        displayName: auth.currentUser.displayName,
       });
     } catch (error) {
       console.error(error);
@@ -66,6 +79,7 @@ function Comments() {
 
     setText("");
     setIsSending(false);
+    setScrollNow(true);
   };
 
   // Adjust textarea height based on changes to text
@@ -105,9 +119,13 @@ function Comments() {
   }, []);
 
   return (
-    <div id="comments">
-      <CommentsDisplay commentDocs={commentDocs} />
-      <div id="comments-input-container">
+    <div className="comments">
+      <CommentsDisplay
+        commentDocs={commentDocs}
+        scrollNow={scrollNow}
+        setScrollNow={setScrollNow}
+      />
+      <div className="comments-input-container">
         <img
           src={
             auth?.currentUser?.photoURL
@@ -115,20 +133,20 @@ function Comments() {
               : "/guest_photo.png"
           }
           alt="user avatar"
-          id="comments-pfp"
+          className="comments-pfp"
           onClick={() => {
             setShowSignin(true);
           }}
         />
 
         <form
-          id="comments-form"
+          className="comments-form"
           onSubmit={(e) => {
             handleTextSubmit(e);
           }}
         >
           <textarea
-            id="comments-textarea"
+            className="comments-textarea"
             placeholder="Leave a comment..."
             name="textInput"
             value={text}
@@ -137,7 +155,11 @@ function Comments() {
               setText(e.target.value);
             }}
           />
-          <button type="submit" id="comments-submit" disabled={isSending}>
+          <button
+            type="submit"
+            className="comments-submit"
+            disabled={isSending}
+          >
             {isSending ? (
               <FontAwesomeIcon icon={faSpinner} />
             ) : (

@@ -15,11 +15,11 @@ function Signin({ showSignin, setShowSignin }: Props) {
     console.log("signing in with google...");
     try {
       await signInWithPopup(auth, googleProvider);
+
+      setShowSignin(false);
     } catch (err) {
       console.error(err);
     }
-
-    setShowSignin(false);
   };
 
   // Sign in with Github
@@ -27,11 +27,11 @@ function Signin({ showSignin, setShowSignin }: Props) {
     console.log("signing in with github...");
     try {
       await signInWithPopup(auth, githubProvider);
+
+      setShowSignin(false);
     } catch (err) {
       console.error(err);
     }
-
-    setShowSignin(false);
   };
 
   // Sign out
@@ -39,6 +39,8 @@ function Signin({ showSignin, setShowSignin }: Props) {
     console.log("signing out...");
     try {
       await signOut(auth);
+
+      setShowSignin(false);
     } catch (err) {
       console.error(err);
     }

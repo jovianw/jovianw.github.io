@@ -1,28 +1,29 @@
-#comments {
+.comments {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   height: 100%;
   width: 100%;
+  overflow: hidden;
 }
 
-#comments-input-container {
+.comments-input-container {
   width: 100%;
   background-color: var(--lighter-color);
   padding: 20px 1ch;
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: 40px 1fr;
   grid-column-gap: 1ch;
 }
 
-#comments-form {
+.comments-form {
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: end;
   grid-column-gap: 1ch;
 }
 
-#comments-textarea {
+.comments-textarea {
   resize: none;
   padding: 1ch;
   border-radius: 5px;
@@ -33,7 +34,7 @@
   box-shadow: none;
 }
 
-#comments-submit {
+.comments-submit {
   font-size: 1.5em;
   border: none;
   outline: none;
@@ -43,11 +44,11 @@
   background: none;
 }
 
-#comments-submit:hover {
+.comments-submit:hover {
   color: var(--highlight-color);
 }
 
-#comments-pfp {
+.comments-pfp {
   height: 40px;
   width: 40px;
   border-radius: 50%;
@@ -59,7 +60,7 @@
   -ms-user-select: none;
 }
 
-#comments-pfp:hover {
+.comments-pfp:hover {
   -webkit-filter: brightness(70%);
   -webkit-transition: all 0.2s ease;
   -moz-transition: all 0.2s ease;
