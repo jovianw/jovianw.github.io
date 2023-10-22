@@ -20,6 +20,7 @@ function About({ handleOnReady }: Props) {
           alt="Jovian Wang"
           id="about-img"
           onLoad={handleOnReady}
+          decoding="sync" // Attempt to fix safari loading issue
         />
         <AboutName />
         <div id="about-summary" className="resizable">
