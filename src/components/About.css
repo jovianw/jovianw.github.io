@@ -38,6 +38,8 @@
     font-size: 150px;
     position: absolute;
     bottom: 0;
+    left: 0;
+    right: 0;
     color: var(--darker-color);
     line-height: 0.8;
     text-align: center;
@@ -57,6 +59,8 @@
 #about-name-mobile-container {
     position: absolute;
     bottom: clamp(0px, calc((100vh - 100vw) / 5), 30vw);
+    left: 0;
+    right: 0;
     width: 100%;
     overflow: hidden;
 }
@@ -133,14 +137,15 @@
 
 @media screen and (max-aspect-ratio: 46/39) {
     #about-img {
-        position: absolute;
-        top: initial;
-        bottom: 40%;
+        position: absolute !important;
+        top: auto !important;
+        bottom: 40% !important;
         left: 50%;
         transform: translateX(-50%);
         height: auto;
         max-height: 50%;
         max-width: 70%;
+        margin: 0;
         float: none;
         shape-outside: none;
     }
