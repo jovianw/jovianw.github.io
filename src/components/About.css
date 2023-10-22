@@ -83,7 +83,7 @@
 }
 
 #about-summary {
-    padding-top: 6px;
+    padding-top: 8px;
     max-height: 45%;
 }
 
@@ -111,6 +111,7 @@
     color: var(--lightest-color);
     text-align: center;
     border-radius: 3px;
+    font-size: larger;
 }
 
 .about-social-icons--link:hover {
@@ -118,7 +119,7 @@
 }
 
 .about-social {
-    margin-top: 0.3em;
+    margin-top: 0.5em;
     display: flex;
     column-gap: 1ch;
 }
