@@ -120,6 +120,6 @@
 
 #comments-container {
   grid-row-start: 1;
-  grid-row-end: span 3;
+  grid-row-end: span 2;
   grid-column-end: -1;
 }
