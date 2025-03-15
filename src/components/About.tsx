@@ -4,7 +4,7 @@ import AboutName from "./AboutName";
 import CopyText from "./CopyText";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faFileLines } from "@fortawesome/free-solid-svg-icons";
-import { faLinkedin, faGithub } from "@fortawesome/free-brands-svg-icons";
+import { faLinkedin } from "@fortawesome/free-brands-svg-icons";
 
 interface Props {
     handleOnReady: () => void;

@@ -2,7 +2,7 @@ import content from "../assets/content.json";
 import "./Timeline.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Comments from "./Comments";
+// import Comments from "./Comments";
 
 interface Props {
   handleOnReady: () => void;
