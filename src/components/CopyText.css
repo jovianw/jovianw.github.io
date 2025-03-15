@@ -1,0 +1,15 @@
+.copytext {
+    -moz-user-select: text;
+    -khtml-user-select: text;
+    -webkit-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+    cursor: pointer;
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 0.3em;
+}
+
+.copytext:hover {
+    color: var(--highlight-color);
+}

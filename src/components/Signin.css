@@ -56,11 +56,11 @@
   color: var(--lightest-color);
 }
 
-a {
+.signin a {
   text-decoration: underline;
   font-size: small;
 }
 
-a:hover {
+.signin a:hover {
   color: var(--highlight-color);
 }

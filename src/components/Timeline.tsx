@@ -57,9 +57,9 @@ function Timeline({ handleOnReady }: Props) {
           </div>
         </div>
       ))}
-      <div className="timeline-card" id="comments-container">
+      {/* <div className="timeline-card" id="comments-container">
         <Comments />
-      </div>
+      </div> */}
     </div>
   );
 }

@@ -52,8 +52,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Arial, Helvetica, sans-serif;
     font-size: 122px;
+    font-weight: 800;
 }
 
 #about-name-mobile-container {
@@ -105,21 +105,31 @@
     background-color: var(--darker-color);
     transition: 0.1s ease-in;
     text-decoration: none;
-    padding-top: 0.2em;
     height: 1.5em;
     font-weight: bolder;
     color: var(--lightest-color);
     text-align: center;
     border-radius: 3px;
     font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .about-social-icons--link:hover {
     background-color: var(--highlight-color);
 }
 
+.about-social-icons-text {
+    padding-left: 0.4em;
+}
+
+.about-social-icons-text h4 {
+    font-size: medium;
+}
+
 .about-social {
-    margin-top: 0.5em;
+    margin-top: 0.7em;
     display: flex;
     column-gap: 1ch;
 }
@@ -153,10 +163,6 @@
 
     #about-name-container {
         height: 60%;
-    }
-
-    #about-summary p {
-        margin-top: 12px;
     }
 
     #about-hero {

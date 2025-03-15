@@ -38,6 +38,10 @@
   height: 100%;
 }
 
+.timeline-text h4 {
+  margin-bottom: 1em;
+}
+
 .timeline-card:hover .timeline-text {
   opacity: 1;
   top: 0;
