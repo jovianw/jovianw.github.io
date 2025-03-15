@@ -173,3 +173,9 @@
         height: 35%;
     }
 }
+
+@media screen and (max-width: 500px) {
+    .about-social-icons--link {
+        font-size: x-large;
+    }
+}
