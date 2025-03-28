@@ -13,7 +13,7 @@
     },
     {
       "icon": "file-lines",
-      "link": "/JovianWang_Resume_2023_Fall.pdf"
+      "link": "/JovianWang_Resume_2025.pdf"
     }
   ],
   "cards": [
@@ -21,7 +21,7 @@
       "image": "gtechbanner.png",
       "title": "Software Engineer, GEICO Tech",
       "year": "2024-Present",
-      "description": "Developed and maintained a suite of internal tools for GEICO's Site Reliability Engineering teams. Led the transition of data off of a third-party data monitoring tool for hundreds of applications, numerous systems, and thousands of developers, leading to millions of dollars in annual budget savings. Developed a tool to aggregate service-level indicators and objectives at both the system-level and at the VP-level. Collaborated with cross-functional teams to integrate new tools into existing workflows and improve team efficiency."
+      "description": "Developed custom exporters and endpoints to integrate performance metrics from legacy IBM storage systems into a centralized observability platform, closing key visibility gaps for storage teams. Led the migration of telemetry assets from an expensive third-party analytics tool to the in-house observability platform, automating pipeline workflows and eliminating millions in enterprise licensing costs while improving platform scalability. Designed and developed a web application to provide VP-level views of service-level objectives across organizational units, enabling high-level visibility into application health and supporting strategic decision-making."
     },
     {
       "image": "vanderbilt.jpg",
@@ -33,7 +33,7 @@
       "image": "vandyhacks.jpg",
       "title": "VandyHacks Design Board",
       "year": "2022-2023",
-      "description": "Led the website design for Vanderbilt University's ninth annual collegiate hackathon, designed VandyHack's cross-year mobile website, coordinated on-site installations, and developed digital assets for VandyHack's tenth hackathon. Collaborated with the marketing board and outside student groups to consistently attract hundreds more participants to each annual hackathon.",
+      "description": "Led design efforts for multiple high-visibility assets, including Vanderbilt University's ninth and tenth annual hackathon websites, a cross-year mobile site, and on-site event installations. Collaborated with marketing and partner student groups to consistently increase hackathon participation by the hundreds.",
       "link": {
         "text": "VandyHacks",
         "url": "https://vandyhacks.org/"
@@ -43,7 +43,7 @@
       "image": "accenture.jpg",
       "title": "Tech Associate, Accenture",
       "year": "2023",
-      "description": "Led the end-to-end development of an internal website showcasing Operations Studio services and products, increasing client acquisition and interaction. Developed interactive visual assets for key client-facing presentations, enhancing proposal engagement and securing multiple long-term business partnerships."
+      "description": "Led the end-to-end development of an internal website to showcase Operations Studio services, collaborating with stakeholders throughout to ensure alignment, enhance visibility, and drive engagement from downstream teams. Created interactive visual assets for key client-facing presentations, enhancing client engagement and securing multiple long-term, multi-million-dollar business partnerships."
     },
     {
       "image": "scuffedfish.png",
@@ -65,7 +65,7 @@
       "image": "amador.jpg",
       "title": "Software Engineer Intern, Amador Bioscience",
       "year": "2022",
-      "description": "Led a three-intern team for the full stack development of an analysis tool using R Shiny and C++. Automated the production of non-compartmental analysis tables, listings, and figures. Implemented a web application to enable analysis customization via a simple user workflow. Established unit tests and documentation structures for future development."
+      "description": "Led a team of three interns in the full-stack development of an internal analysis tool using R Shiny and C++, streamlining the production of tables, listings, and figures to boost operational efficiency. Designed and developed a user-friendly web interface for customizable analyses. Established foundational unit testing and documentation standards to support long-term maintainability and future development."
     },
     {
       "image": "bird.jpg",
@@ -81,13 +81,13 @@
       "image": "cpu_initl.jpg",
       "title": "Digital Systems Teaching Assistant, Vanderbilt University",
       "year": "2021-2022",
-      "description": "Tutored 33 students in logic, organization, and assembly language programming. Facilitated the transition to an online question-and-answer platform for students to anonymously seek coursework help. Assisted professor in grading homework and exams. Standardized scoring and refined answer keys for future use."
+      "description": "Mentored 85 students in logic circuits, state machines, and assembly programming. Facilitated the transition to an online Q&A platform by providing ongoing support and communication, improving engagement in the hybrid course setting. Assisted professor with grading homework and exams. Standardized scoring and refined answer keys for future use."
     },
     {
       "image": "pruned_stroke_tree.png",
       "title": "Machine Learning Research Intern, Amador Bioscience",
       "year": "2021",
-      "description": "Used R and various machine learning methods to model the relationship between drug efficacy and subject data. Reported results to an executive-level audience. Guided future research objectives by identifying key features that impact drug efficacy."
+      "description": "Developed machine learning models in R, including random forest and XGBoost, to analyze the relationship between drug efficacy and subject characteristics. Identified key predictive features and presented insights to executive leadership to inform strategic planning and guide future research priorities. "
     },
     {
       "image": "robotics.png",
