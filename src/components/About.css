@@ -242,4 +242,19 @@
     .about-social-icons--link {
         font-size: x-large;
     }
+
+    #about-gradient-bg .blob.bottom-right {
+        animation-delay: 0s;
+        animation: drift 9s ease-in-out infinite;
+    }
+    
+    #about-gradient-bg .blob.bottom-left {
+        animation-delay: 0s;
+        animation: drift 11s ease-in-out infinite;
+    }
+    
+    #about-gradient-bg .blob.top-left {
+        animation-delay: 0s;
+        animation: drift 14s ease-in-out infinite;
+    }
 }
