@@ -13,6 +13,11 @@ interface Props {
 function About({ handleOnReady }: Props) {
     return (
         <div id="about" className="scroll-snappable">
+            <div id="about-gradient-bg">
+                <div className="blob bottom-left"></div>
+                <div className="blob top-left"></div>
+                <div className="blob bottom-right"></div>
+            </div>
             <div id="about-hero">
                 <img
                     src="/graduation_3.png"
