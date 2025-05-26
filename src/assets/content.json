@@ -1,11 +1,11 @@
 {
-  "headline": "Computer Science, Economics, and Data Science",
-  "about": "Hi! I'm a software engineer with key experience in site reliability, technology consulting, machine learning, and data science. I graduated Vanderbilt University cum laude with degrees in computer science and economics, combining technical depth with analytical problem-solving. Beyond my professional work, I'm an avid snowboarder, a casual tennis player, and a sci-fi geek.",
-  "email": "jovian.l.wang@vanderbilt.edu",
+  "headline": "Software Engineer @ GEICO Tech",
+  "about": "👋 Hi! I'm a software engineer with key experience in site reliability, tech consulting, machine learning, and data science. I graduated Vanderbilt University cum laude with degrees in computer science and economics, combining technical depth with analytical problem-solving. I'm an avid snowboarder, a casual tennis player, and a sci-fi geek.",
+  "email": "wg.jovian@gmail.com",
   "socials": [
     {
       "icon": "envelope",
-      "link": "mailto:jovian.l.wang@vanderbilt.edu?subject=Lets connect!"
+      "link": "mailto:wg.jovian@gmail.com?subject=Lets connect!"
     },
     {
       "icon": "linkedin",
@@ -21,18 +21,60 @@
       "image": "gtechbanner.png",
       "title": "Software Engineer, GEICO Tech",
       "year": "2024-Present",
-      "description": "Developed custom exporters and endpoints to integrate performance metrics from legacy IBM storage systems into a centralized observability platform, closing key visibility gaps for storage teams. Led the migration of telemetry assets from an expensive third-party analytics tool to the in-house observability platform, automating pipeline workflows and eliminating millions in enterprise licensing costs while improving platform scalability. Designed and developed a web application to provide VP-level views of service-level objectives across organizational units, enabling high-level visibility into application health and supporting strategic decision-making."
+      "chips": [
+        {
+          "label": "PROFESSIONAL",
+          "color": "#008000"
+        },
+        {
+          "label": "GEICO",
+            "color": "#0050FF"
+        }
+      ],
+      "description": "Led a major migration from a third-party analytics tool to an in-house observability platform using Grafana’s LGTM stack, saving $12M annually. Built custom exporters in Python, closed visibility gaps, and created a React app for executive SLO monitoring and decision-making."
     },
     {
       "image": "vanderbilt.jpg",
       "title": "Vanderbilt University",
       "year": "2020-2024",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "EDUCATION",
+          "color": "#353839"
+        }
+      ],
       "description": "Cum laude, Bachelor of Science in Computer Science, Bachelor of Arts in Economics.<br/>Minor in Data Science.<br/>GPA: 3.9/4.0"
     },
     {
       "image": "vandyhacks.jpg",
       "title": "VandyHacks Design Board",
       "year": "2022-2023",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "VANDYHACKS",
+          "color": "#353839"
+        },
+        {
+          "label": "DESIGN",
+          "color": "#353839"
+        }
+      ],
       "description": "Led design efforts for multiple high-visibility assets, including Vanderbilt University's ninth and tenth annual hackathon websites, a cross-year mobile site, and on-site event installations. Collaborated with marketing and partner student groups to consistently increase hackathon participation by the hundreds.",
       "link": {
         "text": "VandyHacks",
@@ -43,12 +85,36 @@
       "image": "accenture.jpg",
       "title": "Tech Associate, Accenture",
       "year": "2023",
-      "description": "Led the end-to-end development of an internal website to showcase Operations Studio services, collaborating with stakeholders throughout to ensure alignment, enhance visibility, and drive engagement from downstream teams. Created interactive visual assets for key client-facing presentations, enhancing client engagement and securing multiple long-term, multi-million-dollar business partnerships."
+      "chips": [
+        {
+          "label": "PROFESSIONAL",
+          "color": "#008000"
+        },
+        {
+          "label": "ACCENTURE",
+            "color": "#7F00FF"
+        }
+      ],
+      "description": "Led the end-to-end development of an internal website to showcase Operations Studio services, collaborating with stakeholders to ensure alignment and boost engagement. Contributed to strategic hackathon proposals to inspire client-aligned AI solutions under tight deadlines. Designed interactive visuals for client presentations, helping secure major long-term partnerships."
     },
     {
       "image": "scuffedfish.png",
       "title": "ScuffedFish: A Minimax & Alpha-Beta Pruning Chess AI",
       "year": "2022",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "AI/ML",
+          "color": "#353839"
+        }
+      ],
       "description": "Implemented a custom JavaScript chess engine using minimax and alpha-beta pruning AI techniques. Evaluated the performance of different utility functions in an analytical report. Determined that the addition of positional utility increases engine performance as well as the occurrence of standard, player-like chess openings.",
       "link": {
         "text": "ScuffedFish",
@@ -59,52 +125,124 @@
       "image": "networks.png",
       "title": "Explaining Species Endangerment Through Network Analysis",
       "year": "2022",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        }
+      ],
       "description": "Examined the correlations between species endangerment levels and various network metrics using large-scale datasets from the IUCN RedList API and studies of the Greater Antillean coral reef. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species."
     },
     {
       "image": "amador.jpg",
       "title": "Software Engineer Intern, Amador Bioscience",
       "year": "2022",
+      "chips": [
+        {
+          "label": "PROFESSIONAL",
+          "color": "#008000"
+        },
+        {
+          "label": "AMADOR BIOSCIENCE",
+            "color": "#00a0e8"
+        }
+      ],
       "description": "Led a team of three interns in the full-stack development of an internal analysis tool using R Shiny and C++, streamlining the production of tables, listings, and figures to boost operational efficiency. Designed and developed a user-friendly web interface for customizable analyses. Established foundational unit testing and documentation standards to support long-term maintainability and future development."
-    },
-    {
-      "image": "bird.jpg",
-      "title": "Bird Microsite!",
-      "year": "2022",
-      "description": "A neat little personal project. Experimented with JavaScript to create a fun little website.",
-      "link": {
-        "text": "Bird!",
-        "url": "https://jovian.wang/bird/"
-      }
     },
     {
       "image": "cpu_initl.jpg",
       "title": "Digital Systems Teaching Assistant, Vanderbilt University",
       "year": "2021-2022",
+      "chips": [
+        {
+          "label": "PROFESSIONAL",
+          "color": "#008000"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        }
+      ],
       "description": "Mentored 85 students in logic circuits, state machines, and assembly programming. Facilitated the transition to an online Q&A platform by providing ongoing support and communication, improving engagement in the hybrid course setting. Assisted professor with grading homework and exams. Standardized scoring and refined answer keys for future use."
     },
     {
       "image": "pruned_stroke_tree.png",
       "title": "Machine Learning Research Intern, Amador Bioscience",
       "year": "2021",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "AI/ML",
+          "color": "#353839"
+        }
+      ],
       "description": "Developed machine learning models in R, including random forest and XGBoost, to analyze the relationship between drug efficacy and subject characteristics. Identified key predictive features and presented insights to executive leadership to inform strategic planning and guide future research priorities. "
     },
     {
       "image": "robotics.png",
       "title": "Vanderbilt Robotics",
       "year": "2021",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        }
+      ],
       "description": "Assisted the implementation of robot vision for the Vanderbilt Robotics Camera Sub-team and worked on Vanderbilt's robot entry to the NASA Lunabotics Competition."
     },
     {
       "image": "yygs.jpg",
       "title": "An Insight into China's Investments in Kenya, Yale Young Global Scholars",
       "year": "2019",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "YALE",
+          "color": "#1C3B6A"
+        },
+        {
+          "label": "EDUCATION",
+          "color": "#353839"
+        }
+      ],
       "description": "Conducted and presented a case study on China-Kenya relations and the influence of foreign aid on state sovereignty. Highlighted the expanding economic influence of China upon third-world countries and its cultural, political, and long-term impact."
     },
     {
-      "image": "carleton.png",
+      "image": "carleton.webp",
       "title": "What's Your Beef: The Effect of Visual Representation on Framing, SQRI",
       "year": "2018",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "CARLETON",
+          "color": "#06402B"
+        },
+        {
+          "label": "EDUCATION",
+          "color": "#353839"
+        }
+      ],
       "description": "Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon MTurk experiment on consumer ratings and a 2-by-3 analysis of variance.",
       "link": {
         "text": "What's Your Beef",

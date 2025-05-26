@@ -4,6 +4,7 @@ import { useLayoutEffect, useState, useEffect } from "react"
 import Timeline from "./components/Timeline"
 import Overlay from "./components/Overlay"
 import TabTitle from "./components/TabTitle"
+import Footer from "./components/Footer"
 
 /**
  * Custom hook that returns the current window size.
@@ -137,7 +138,7 @@ function App() {
 
     return (
         <>
-            <TabTitle></TabTitle>
+            {/* <TabTitle></TabTitle> */}
             {(!aboutReady || !timelineReady) && <Overlay label="Loading..." />}
             <About
                 handleOnReady={() => {
@@ -149,7 +150,8 @@ function App() {
                     setTimelineReady(true)
                 }}
             />
-            <p className="bottom-text">Copyright © 2025 Jovian Wang</p>
+            {/* <p className="bottom-text">Copyright © 2025 Jovian Wang</p> */}
+            <Footer />
         </>
     )
 }

@@ -1,0 +1,13 @@
+#about-name.reveal-vertical {
+  overflow: hidden;
+  animation: reveal-vertical 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
+
+@keyframes reveal-vertical {
+  from {
+    clip-path: inset(100% 0 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+}

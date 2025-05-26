@@ -6,7 +6,7 @@
     user-select: text;
     cursor: pointer;
     text-decoration: underline;
-    text-decoration-style: dotted;
+    /* text-decoration-style: dotted; */
     text-underline-offset: 0.3em;
 }
 

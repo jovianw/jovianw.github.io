@@ -4,6 +4,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 // import Comments from "./Comments";
 
+// Define a type for the card, including optional chips
+interface TimelineCard {
+  image: string;
+  title: string;
+  year: string;
+  description: string;
+  link?: { text: string; url: string };
+  chips?: { label: string; color: string }[];
+}
+
 interface Props {
   handleOnReady: () => void;
 }
@@ -17,7 +27,7 @@ function Timeline({ handleOnReady }: Props) {
 
   return (
     <div id="timeline">
-      {content.cards.map((card, index) => (
+      {(content.cards as TimelineCard[]).map((card, index) => (
         <div
           className="timeline-card"
           key={card.title}
@@ -36,6 +46,23 @@ function Timeline({ handleOnReady }: Props) {
           <div className="timeline-text resizable">
             <h3>{card.title}</h3>
             <h4>{card.year}</h4>
+            {/* Render chips if present */}
+            {card.chips && card.chips.length > 0 && (
+              <div className="timeline-chips">
+                {card.chips.map((chip, chipIdx) => (
+                  <span
+                    key={chipIdx}
+                    className="timeline-chip"
+                    style={{
+                      backgroundColor: `color-mix(in srgb, ${chip.color} 30%, white)`, // brighter version
+                      color: chip.color,
+                    }}
+                  >
+                    {chip.label}
+                  </span>
+                ))}
+              </div>
+            )}
             <p className="resizable" style={{ whiteSpace: "pre-line" }}>
               {card.description.split("<br/>").join("\n")}
             </p>

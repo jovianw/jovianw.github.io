@@ -47,14 +47,14 @@
     background: rgba(255,177,131);
     top: 10%;
     left: 0%;
-    animation-delay: 4s;
+    animation-delay: -10s;
 }
 
 #about-gradient-bg .blob.top-left {
     background: #5C8BCF;
     top: -10%;
     left: -20%;
-    animation-delay: 9s;
+    animation-delay: -5s;
 }
 
 /* 4. Gentle keyframe drift */
@@ -147,7 +147,7 @@
 }
 
 #about-summary {
-    padding-top: 8px;
+    padding-top: 24px;
     max-height: 45%;
 }
 

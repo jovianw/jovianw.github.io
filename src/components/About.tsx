@@ -34,7 +34,7 @@ function About({ handleOnReady }: Props) {
                     <div className="about-social">
                         {/* I would make this a list but fontawesome global additions are not working as of 6.4.2 */}
                         <a
-                            href="mailto:jovian.l.wang@vanderbilt.edu?subject=Lets connect!"
+                            href="mailto:wg.jovian@gmail.com?subject=Lets connect!"
                             className="about-social-icons--link"
                             target="_blank"
                         >

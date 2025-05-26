@@ -1,4 +1,5 @@
 import { useLayoutEffect, useState, useEffect } from "react";
+import "./AboutName.css";
 
 function useWindowSize() {
   const [size, setSize] = useState([0, 0]);
@@ -15,6 +16,7 @@ function useWindowSize() {
 
 function AboutName() {
   const [width, height] = useWindowSize();
+  const [reveal, setReveal] = useState(false);
 
   const resizeName = ({ element }: { element: Element | null }) => {
     if (element) {
@@ -45,6 +47,11 @@ function AboutName() {
   };
 
   useEffect(() => {
+    // Trigger reveal animation on mount
+    setReveal(true);
+  }, []);
+
+  useEffect(() => {
     if (width / height > 46 / 39) {
       resizeName({ element: document.getElementById("about-name") });
     } else {
@@ -58,7 +65,7 @@ function AboutName() {
   return (
     <div id="about-name-container">
       {width / height > 46 / 39 ? (
-        <div id="about-name">
+        <div id="about-name" className={reveal ? "reveal-vertical" : ""}>
           <h1>JOVIAN WANG</h1>
         </div>
       ) : (
