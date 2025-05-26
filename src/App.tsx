@@ -3,7 +3,6 @@ import "./App.css"
 import { useLayoutEffect, useState, useEffect } from "react"
 import Timeline from "./components/Timeline"
 import Overlay from "./components/Overlay"
-import TabTitle from "./components/TabTitle"
 import Footer from "./components/Footer"
 
 /**
