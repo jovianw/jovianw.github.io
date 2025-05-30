@@ -45,13 +45,105 @@
         {
           "label": "VANDERBILT",
           "color": "#B38600"
-        },
-        {
-          "label": "EDUCATION",
-          "color": "#353839"
         }
       ],
       "description": "Cum laude, Bachelor of Science in Computer Science, Bachelor of Arts in Economics.<br/>Minor in Data Science.<br/>GPA: 3.9/4.0"
+    },
+    {
+      "image": "uls.webp",
+      "title": "Universal Lesion Segmentation with Transformers",
+      "year": "2024",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "AI/ML",
+          "color": "#353839"
+        }
+      ],
+      "description": "Led a comparative study of state-of-the-art segmentation models (nnUNetv2, SwinUNet, DeepLabV3+, Medical Transformer, TransUNet) for 3D lesion segmentation across diverse tissue types. Identified TransUNet as the most robust candidate, achieving a Dice score of 0.87 on bone lesions. Tackled challenges with overfitting, memory constraints, and model generalization using data augmentation, architecture adaptation, and performance diagnostics.",
+      "link": {
+        "text": "GitHub",
+        "url": "https://github.com/KWFredShi/ULS2023NGKD"
+      }
+    },
+    {
+      "image": "p2p.png",
+      "title": "Peer-to-Peer Encyrpted Chat",
+      "year": "2023",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "NETWORKS",
+          "color": "#353839"
+        }
+      ],
+      "description": "Developed file transfer and input validation features for a Python-based P2P chat system over TCP. Each peer operates as both client and server, with symmetric encryption securing communication. Validated on Mininet to simulate network conditions. Included a lightweight JS/SASS frontend for user interaction.",
+      "link": {
+        "text": "Video",
+        "url": "https://drive.google.com/file/d/1kOOkdAZkCMQRU49zYvU-eZ-aVsnHsQqe/view?usp=sharing"
+      }
+    },
+    {
+      "image": "useconomics.webp",
+      "title": "Projects and Proficiency: Effects of PWA",
+      "year": "2023",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "ECONOMICS",
+          "color": "#353839"
+        },
+        {
+          "label": "DATA ANALYSIS",
+          "color": "#353839"
+        }
+      ],
+      "description": "Authored an empirical research paper analyzing how Public Works Administration (PWA) spending affected long-term occupational skill levels and income in the U.S. construction industry. Linked 1930–1940 census microdata and county-level spending records to estimate treatment effects via interaction models with demographic and employment controls. Found construction workers' skill outcomes were largely stable, with slight positive shifts in skill ranking and income due to PWA investment.",
+      "link": {
+        "text": "Paper",
+        "url": "https://github.com/jovianw/papers/blob/main/Projects%20and%20Proficiency/Projects%20and%20Proficiency.pdf"
+      }
+    },
+    {
+      "image": "databases.webp",
+      "title": "Voter Registration System",
+      "year": "2023",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "DATABASES",
+          "color": "#353839"
+        }
+      ],
+      "description": "Implemented a MVP web application for managing voter registration data using PHP and MySQL. Designed and implemented a normalized relational database with support for ACID-compliant transactions and secure query handling through views, stored procedures, triggers, and transactions. Connected a PHP frontend that allows users to register, update, query, and analyze voter registration data."
     },
     {
       "image": "vandyhacks.jpg",
@@ -68,7 +160,7 @@
         },
         {
           "label": "VANDYHACKS",
-          "color": "#353839"
+          "color": "#B38600"
         },
         {
           "label": "DESIGN",
@@ -77,7 +169,7 @@
       ],
       "description": "Led design efforts for multiple high-visibility assets, including Vanderbilt University's ninth and tenth annual hackathon websites, a cross-year mobile site, and on-site event installations. Collaborated with marketing and partner student groups to consistently increase hackathon participation by the hundreds.",
       "link": {
-        "text": "VandyHacks",
+        "text": "Website",
         "url": "https://vandyhacks.org/"
       }
     },
@@ -96,6 +188,50 @@
         }
       ],
       "description": "Led the end-to-end development of an internal website to showcase Operations Studio services, collaborating with stakeholders to ensure alignment and boost engagement. Contributed to strategic hackathon proposals to inspire client-aligned AI solutions under tight deadlines. Designed interactive visuals for client presentations, helping secure major long-term partnerships."
+    },
+    {
+      "image": "icbscraper.webp",
+      "title": "News Scraper for Media Trend Analysis",
+      "year": "2023",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "IVY COLLEGE OF BUSINESS",
+            "color": "#C1121F"
+        }
+      ],
+      "description": "Created a Python package that uses Selenium and robust scraping logic to automate web browsing and scrape article content from a variety of news sites. The package is designed to be easily extensible, allowing users to add new sites and customize scraping behavior. Includes a command-line interface for easy use and can be integrated into larger data analysis pipelines."
+    },
+    {
+      "image": "salesforecasting.webp",
+      "title": "Sales Forecasting with Time Series Machine Learning",
+      "year": "2023",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "AI/ML",
+          "color": "#353839"
+        },
+        {
+          "label": "DATA ANALYSIS",
+          "color": "#353839"
+        }
+      ],
+      "description": "Built a time series forecasting model to predict daily product-level sales across 56 stores using multivariate data from a Kaggle competition. Merged and cleaned disparate datasets, imputing missing values via LOESS. Engineered temporal and categorical features to capture weekly seasonality and promotion effects. Explored scalable modeling across store-product pairs and evaluated extensions like PCA and RNNs.",
+      "link": {
+        "text": "Paper",
+        "url": "https://github.com/jovianw/papers/blob/main/Store%20Sales%20Forecasting/Store_Sales_Forecasting_Final_Paper.pdf"
+      }
     },
     {
       "image": "scuffedfish.png",
@@ -117,7 +253,7 @@
       ],
       "description": "Implemented a custom JavaScript chess engine using minimax and alpha-beta pruning AI techniques. Evaluated the performance of different utility functions in an analytical report. Determined that the addition of positional utility increases engine performance as well as the occurrence of standard, player-like chess openings.",
       "link": {
-        "text": "ScuffedFish",
+        "text": "Website",
         "url": "https://jovian.wang/chessbot/"
       }
     },
@@ -133,9 +269,17 @@
         {
           "label": "VANDERBILT",
           "color": "#B38600"
+        },
+        {
+          "label": "DATA ANALYSIS",
+          "color": "#353839"
         }
       ],
-      "description": "Examined the correlations between species endangerment levels and various network metrics using large-scale datasets from the IUCN RedList API and studies of the Greater Antillean coral reef. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species."
+      "description": "Examined the correlations between species endangerment levels and various network metrics using large-scale datasets from the IUCN RedList API and studies of the Greater Antillean coral reef. Case study uses network analysis to highlight the greater endangerment level of species with high node distance from producer species.",
+      "link": {
+        "text": "Paper",
+        "url": "https://github.com/jovianw/papers/blob/main/IACN%20Network%20Analysis/Explaining%20Species%20Endangerment%20Through%20Network%20Analysis.pdf"
+      }
     },
     {
       "image": "amador.jpg",
@@ -152,6 +296,26 @@
         }
       ],
       "description": "Led a team of three interns in the full-stack development of an internal analysis tool using R Shiny and C++, streamlining the production of tables, listings, and figures to boost operational efficiency. Designed and developed a user-friendly web interface for customizable analyses. Established foundational unit testing and documentation standards to support long-term maintainability and future development."
+    },
+    {
+      "image": "statslab.webp",
+      "title": "California Housing Price Prediction",
+      "year": "2022",
+      "chips": [
+        {
+          "label": "PERSONAL",
+          "color": "#CC5E13"
+        },
+        {
+          "label": "VANDERBILT",
+          "color": "#B38600"
+        },
+        {
+          "label": "DATA ANALYSIS",
+          "color": "#353839"
+        }
+      ],
+      "description": "Performed statistical modeling in R to predict median house values using 1990 California Census data. Conducted exploratory analysis and built linear and polynomial regression models with stepwise feature selection. Determined that a multilinear regression model using a small combination of occupant, neighborhood, and geographical factors (e.g., income, ocean proximity) is effective at predicting house values with 92.5% of predictions within one standard deviation of actual values."
     },
     {
       "image": "cpu_initl.jpg",
@@ -201,6 +365,10 @@
         {
           "label": "VANDERBILT",
           "color": "#B38600"
+        },
+        {
+          "label": "ROBOTICS",
+          "color": "#353839"
         }
       ],
       "description": "Assisted the implementation of robot vision for the Vanderbilt Robotics Camera Sub-team and worked on Vanderbilt's robot entry to the NASA Lunabotics Competition."
@@ -219,7 +387,7 @@
           "color": "#1C3B6A"
         },
         {
-          "label": "EDUCATION",
+          "label": "DATA ANALYSIS",
           "color": "#353839"
         }
       ],
@@ -239,14 +407,14 @@
           "color": "#06402B"
         },
         {
-          "label": "EDUCATION",
+          "label": "DATA ANALYSIS",
           "color": "#353839"
         }
       ],
       "description": "Conducted during the Carleton College Summer Quantitative Reasoning Institute. Led a student behavioral economics team to analyze psychological framing from product packaging. Conducted an Amazon MTurk experiment on consumer ratings and a 2-by-3 analysis of variance.",
       "link": {
-        "text": "What's Your Beef",
-        "url": "/CarletonSQRI.pdf"
+        "text": "Poster",
+        "url": "https://github.com/jovianw/papers/blob/main/Framing/CarletonSQRI.pdf"
       }
     }
   ]
