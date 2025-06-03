@@ -75,7 +75,7 @@
     },
     {
       "image": "p2p.png",
-      "title": "Peer-to-Peer Encyrpted Chat",
+      "title": "Peer-to-Peer Encrypted Chat",
       "year": "2023",
       "chips": [
         {
@@ -91,7 +91,7 @@
           "color": "#353839"
         }
       ],
-      "description": "Developed file transfer and input validation features for a Python-based P2P chat system over TCP. Each peer operates as both client and server, with symmetric encryption securing communication. Validated on Mininet to simulate network conditions. Included a lightweight JS/SASS frontend for user interaction.",
+      "description": "Developed file transfer and input validation features for a Python-based P2P chat system over TCP. Each peer operates as both client and server, with symmetric encryption securing communication. Validated using Mininet to simulate network conditions. Included a lightweight JS/SASS frontend for user interaction.",
       "link": {
         "text": "Video",
         "url": "https://drive.google.com/file/d/1kOOkdAZkCMQRU49zYvU-eZ-aVsnHsQqe/view?usp=sharing"
@@ -143,7 +143,7 @@
           "color": "#353839"
         }
       ],
-      "description": "Implemented a MVP web application for managing voter registration data using PHP and MySQL. Designed and implemented a normalized relational database with support for ACID-compliant transactions and secure query handling through views, stored procedures, triggers, and transactions. Connected a PHP frontend that allows users to register, update, query, and analyze voter registration data."
+      "description": "Implemented an MVP web application for managing voter registration data using PHP and MySQL. Designed and implemented a normalized relational database with support for ACID-compliant transactions and secure query handling through views, stored procedures, triggers, and transactions. Connected a PHP frontend that allows users to register, update, query, and analyze voter registration data."
     },
     {
       "image": "vandyhacks.jpg",
