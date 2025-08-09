@@ -1,6 +1,6 @@
 {
   "headline": "Software Engineer @ GEICO Tech",
-  "about": "👋 Hi! I'm a software engineer with key experience in site reliability, tech consulting, machine learning, and data science. I graduated Vanderbilt University cum laude with degrees in computer science and economics, combining technical depth with analytical problem-solving. I'm an avid snowboarder, a casual tennis player, and a sci-fi geek.",
+  "about": "👋 Hi! I'm a software engineer with key experience in site reliability, data infrastructure, and machine learning. I graduated Vanderbilt University cum laude with degrees in computer science and economics, combining technical depth with analytical problem-solving. I'm an avid snowboarder, a v4 climber, a casual tennis player, and a sci-fi geek.",
   "email": "wg.jovian@gmail.com",
   "socials": [
     {
@@ -18,6 +18,26 @@
   ],
   "cards": [
     {
+      "image": "askmartin.png",
+      "title": "Winner, GEICO 2025 AI Hackathon",
+      "year": "2025",
+      "chips": [
+        {
+          "label": "PROFESSIONAL",
+          "color": "#008000"
+        },
+        {
+          "label": "GEICO",
+            "color": "#0050FF"
+        },
+        {
+          "label": "AI/ML",
+          "color": "#353839"
+        }
+      ],
+      "description": "Directed a team of six engineers to win GEICO’s 2025 AI Hackathon. Developed a RAG-empowered assistant that leverages multi-source channel-specific data to automatically provide context-aware solutions to user queries in any Slack help channel, significantly decreasing support team workload and increasing customer engagement. Selected as one of the top winners from 80+ competing teams after a 48-hour sprint."
+    },
+    {
       "image": "gtechbanner.png",
       "title": "Software Engineer, GEICO Tech",
       "year": "2024-Present",
@@ -31,7 +51,7 @@
             "color": "#0050FF"
         }
       ],
-      "description": "Led a major migration from a third-party analytics tool to an in-house observability platform using Grafana’s LGTM stack, saving $12M annually. Built custom exporters in Python, closed visibility gaps, and created a React app for executive SLO monitoring and decision-making."
+      "description": "Re-architecting large distributed observability pipelines, absorbing spikes, eliminating critical log losses, accelerating query performance, and enabling advanced analytics. Led a major migration of telemetry data from a third-party analytics tool to an in-house observability platform using Grafana’s LGTM stack, saving $12M annually. Designed lakehouse data models and pipelines for high-volume multi-tenant data."
     },
     {
       "image": "vanderbilt.jpg",
