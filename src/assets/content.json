@@ -1,6 +1,6 @@
 {
   "headline": "Software Engineer @ GEICO Tech",
-  "about": "👋 Hi! I'm a software engineer with key experience in site reliability, data infrastructure, and machine learning. I graduated Vanderbilt University cum laude with degrees in computer science and economics, combining technical depth with analytical problem-solving. I'm an avid snowboarder, a v4 climber, a casual tennis player, and a sci-fi geek.",
+  "about": "👋 Hi! I'm a software engineer with key experience in site reliability, data infrastructure, and machine learning. I graduated Vanderbilt University cum laude with degrees in computer science and economics, combining technical depth with analytical problem-solving. I'm an avid snowboarder, a v4 climber, a tennis player, and a sci-fi geek.",
   "email": "wg.jovian@gmail.com",
   "socials": [
     {
@@ -13,10 +13,30 @@
     },
     {
       "icon": "file-lines",
-      "link": "/JovianWang_Resume_2025.pdf"
+      "link": "/JovianWang_Resume_2026.pdf"
     }
   ],
   "cards": [
+    {
+      "image": "fram.webp",
+      "title": "Fram Analytics",
+      "year": "2026",
+      "chips": [
+        {
+          "label": "PROFESSIONAL",
+          "color": "#008000"
+        },
+        {
+          "label": "AI/ML",
+          "color": "#353839"
+        }
+      ],
+      "description": "In-process of co-founding Fram Analytics. We leverage an intelligent, in-house privacy-preserving pharmacometrics copilot to reduce turnaround times on data analyses and clinical reporting.",
+      "link": {
+        "text": "Website",
+        "url": "https://framanalytics.com/"
+      }
+    },
     {
       "image": "askmartin.png",
       "title": "Winner, GEICO 2025 AI Hackathon",
