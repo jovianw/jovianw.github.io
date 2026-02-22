@@ -63,7 +63,7 @@ function Timeline({ handleOnReady }: Props) {
                 ))}
               </div>
             )}
-            <p className="resizable" style={{ whiteSpace: "pre-line" }}>
+            <p style={{ whiteSpace: "pre-line" }}>
               {card.description.split("<br/>").join("\n")}
             </p>
             {card.link !== undefined && (

@@ -1,3 +1,6 @@
+.resizable {
+  overflow: hidden;
+}
 
 button {
   -webkit-appearance: none;
