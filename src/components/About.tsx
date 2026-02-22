@@ -48,7 +48,7 @@ function About({ handleOnReady }: Props) {
                             <FontAwesomeIcon icon={faLinkedin}></FontAwesomeIcon>
                         </a>
                         <a
-                            href="/JovianWang_Resume_2025.pdf"
+                            href="/JovianWang_Resume_2026.pdf"
                             className="about-social-icons--link about-social-icons-text"
                             target="_blank"
                         >
