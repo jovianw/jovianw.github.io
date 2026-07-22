@@ -1,0 +1,190 @@
+/* The shimmer.
+ *
+ * A feathered highlight travels left to right across a piece of text, and a
+ * moment before it leaves, the same highlight races along the row of controls
+ * beneath it. Both the hero and the footer play it exactly once — the hero on
+ * entrance, the footer the first time the visitor reaches the end.
+ *
+ * After the hero's pass the wordmark keeps a highlight, and from then on it is
+ * driven by the pointer rather than by a clock: `--shine-x` is the resting
+ * position of the band, and AboutName springs it against the pointer's travel.
+ * The two are the same band and the same gradient — the sweep hands over to it
+ * mid-air, which is why the sweep's end state and the shine's arrival state are
+ * both "parked off the left edge".
+ *
+ * One animation drives the rest of it: `background-position` on a gradient
+ * three times the width of its box, clipped to the glyphs for text and to the
+ * button's rounded rect for controls.
+ *
+ * Text is never restyled to carry it. The highlight rides on a copy of the word
+ * laid exactly over the original (see ShimmerText.tsx), so the real text keeps
+ * its own colour and its subpixel antialiasing throughout — switching the live
+ * text to `color: transparent` for the duration visibly changes its weight, and
+ * the wordmark is far too large for that to pass unnoticed.
+ *
+ * Nothing here branches on prefers-reduced-motion, for the reason given in
+ * main.tsx. The effect is kept brief, sparse and physically small instead.
+ */
+
+/* On the targets rather than on `.shimmer-run`, because the wordmark's
+   gradient outlives the run: a custom property that resolves to nothing takes
+   the whole declaration using it with it, so tokens scoped to the run class
+   would leave the pointer shine with no background image at all. */
+.shimmer-text,
+.about-actions {
+    /* Off vertical by enough to read as a rake across the letterforms. The
+       angle is absolute, not derived from the box, so the same value gives the
+       same visual tilt on a 980px wordmark and a 44px icon button. */
+    --shimmer-angle: 118deg;
+    /* Barely moving, then away, then a long glide in. The late control point
+       on the x axis is what holds the start back — the band should look like
+       it is being drawn across rather than fired. */
+    --shimmer-ease: cubic-bezier(0.74, 0.03, 0.3, 1);
+    --shimmer-text-dur: 1500ms;
+    --shimmer-row-dur: 1200ms;
+    /* The controls start before the word has finished, so the two read as one
+       gesture handed down the page rather than as two separate events. */
+    --shimmer-lead: 950ms;
+}
+
+/* The gradient is wider than its box, so 100% parks the band off the left edge
+   and 0% carries it off the right. Text only: the control row sweeps in
+   absolute lengths, for the reason given below. */
+@keyframes shimmer-sweep {
+    from {
+        background-position: 100% 0;
+    }
+    to {
+        background-position: 0% 0;
+    }
+}
+
+/* ---- Text ---------------------------------------------------------------- */
+.shimmer-text {
+    position: relative;
+}
+
+/* `inset: 0` gives the copy exactly the original's box, and every property that
+   decides where a glyph lands — font, size, tracking, line-height, text-wrap —
+   is inherited, so the two stack to the pixel. At rest the band is parked off
+   the left edge and this element paints nothing at all. */
+.shimmer-text__sheen {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+
+    /* A bright core inside a wide, quiet falloff. The two shoulders do
+       different jobs: the inner pair carries the highlight itself, and the
+       outer pair is nearly invisible on its own — it exists so the band has no
+       edge to catch the eye. Stops are read against a box three times too
+       wide, so this 14% spans a little over 40% of the word. */
+    background-image: linear-gradient(
+        var(--shimmer-angle),
+        transparent 43%,
+        rgba(255, 255, 255, 0.12) 46.5%,
+        rgba(255, 255, 255, 0.6) 49.2%,
+        rgba(255, 255, 255, 0.95) 50%,
+        rgba(255, 255, 255, 0.6) 50.8%,
+        rgba(255, 255, 255, 0.12) 53.5%,
+        transparent 57%
+    );
+    background-repeat: no-repeat;
+    background-size: 300% 100%;
+    /* The resting position, and the one thing about this element the pointer
+       can move. The default parks the band off the left edge, which is both
+       the state before anything has happened and the state the sweep hands
+       over in. */
+    background-position: var(--shine-x, 100%) 0;
+    -webkit-background-clip: text;
+    background-clip: text;
+    opacity: var(--shine-opacity, 1);
+}
+
+/* An animation beats a declared value whatever the specificity, so the sweep
+   takes `background-position` over for its duration and gives it back — no
+   need to suppress `--shine-x` while it runs. */
+.shimmer-run .shimmer-text__sheen {
+    animation: shimmer-sweep var(--shimmer-text-dur) var(--shimmer-ease) both;
+}
+
+/* The pointer-tracked highlight is something the surface *has* rather than
+   something that happens to it, so it rests well below the sweep's intensity.
+   Full strength, it stops reading as gloss and starts reading as a graphic
+   sitting on the word. */
+.is-shine-tracking {
+    --shine-opacity: 0.5;
+}
+
+/* Two-line wordmark: the lower line picks the band up as the upper one is
+   letting it go, so the pair reads as a single diagonal pass rather than as two
+   lines flashing in lockstep. */
+.shimmer-run .about-name-text:nth-child(2) .shimmer-text__sheen {
+    animation-delay: 200ms;
+}
+
+/* ---- Controls ------------------------------------------------------------ */
+/* The row is treated as one surface with gaps cut in it, not as three things
+   taking turns: a single band crosses the whole row at one constant width and
+   one constant speed, showing wherever there happens to be a button under it
+   and nothing where there is not.
+ *
+ * That is why the sweep here is in absolute lengths rather than the
+ * percentages the text uses. A percentage resolves against each element's own
+ * box, so a 44px icon and a 190px CTA would take the same time to cross —
+ * three different speeds, which is exactly the "three separate flashes" this
+ * is avoiding. Every control instead animates the same band position in the
+ * row's coordinates and subtracts its own offset, so all three are windows
+ * onto one moving band. `--shimmer-row` and `--shimmer-o` are the measurements
+ * that makes possible; useShimmerRow publishes them, since no CSS length can
+ * express "my distance from the start of my parent".
+ *
+ * It is carried by the ring pseudo-element from Button.css, which is the only
+ * free layer on a button — `::before` is the hover fill and has to stay
+ * parked. It also happens to be the right one: the ring sits *above* the
+ * label, so the pass reads as light crossing the whole control rather than as
+ * something happening behind the text.
+ *
+ * `:not(:hover)` is the "unless they are already on it" rule. If a pointer
+ * arrives mid-pass the selector stops matching, the shine vanishes on the spot
+ * and the hover fill takes the control over — which is the right handover: the
+ * visitor has found the button, so the thing pointing at it has no more work. */
+@keyframes shimmer-row-sweep {
+    from {
+        background-position: calc(-1 * var(--shimmer-band) - var(--shimmer-o, 0px)) 0;
+    }
+    to {
+        background-position: calc(var(--shimmer-row, 0px) - var(--shimmer-o, 0px)) 0;
+    }
+}
+
+/* Proportional to the row, so a wide footer row gets a wider highlight than a
+   narrow hero one, but bounded: unclamped it is a searchlight on a 900px row
+   and a hard edge on a 140px one. */
+.about-actions {
+    --shimmer-band: clamp(96px, calc(var(--shimmer-row, 320px) * 0.42), 240px);
+}
+
+/* The gradient *is* the band here — the image is exactly one band wide, so the
+   stops run 0% to 100% rather than clustering around the middle of a much
+   wider one. */
+.shimmer-run .about-actions .btn:not(:hover):not(:focus-visible)::after {
+    background-image: linear-gradient(
+        var(--shimmer-angle),
+        transparent 0%,
+        rgba(255, 255, 255, 0.1) 26%,
+        rgba(255, 255, 255, 0.44) 45%,
+        rgba(255, 255, 255, 0.72) 50%,
+        rgba(255, 255, 255, 0.44) 55%,
+        rgba(255, 255, 255, 0.1) 74%,
+        transparent 100%
+    );
+    background-repeat: no-repeat;
+    background-size: var(--shimmer-band) 100%;
+    background-position: calc(var(--shimmer-row, 0px) - var(--shimmer-o, 0px)) 0;
+    /* No per-control delay. The delay *is* the offset: a control further along
+       the row is reached later because the band has further to travel. */
+    animation: shimmer-row-sweep var(--shimmer-row-dur) var(--shimmer-ease)
+        var(--shimmer-lead) both;
+}

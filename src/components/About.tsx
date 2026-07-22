@@ -1,4 +1,4 @@
-import { type RefObject } from "react";
+import { useRef, type RefObject } from "react";
 import { m, useScroll, useTransform } from "motion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEnvelope, faFileLines } from "@fortawesome/free-solid-svg-icons";
@@ -8,8 +8,10 @@ import AboutName from "./AboutName";
 import GradientField from "./GradientField";
 import BlurFade from "./BlurFade";
 import CopyText from "./CopyText";
+import useShimmer, { useShimmerRow } from "./useShimmer";
 import "./About.css";
 import "./Button.css";
+import "./Shimmer.css";
 
 interface Props {
     heroRef: RefObject<HTMLElement>;
@@ -43,6 +45,19 @@ function About({ heroRef, start, onReady }: Props) {
     // the wordmark's — the portrait is behind it, so it moves less.
     const portraitY = useTransform(scrollYProgress, [0, 1], [0, -80]);
 
+    // The wordmark catches the light, and the row of buttons picks it up on the
+    // way past. The lead only has to clear the entrance — the wordmark is still
+    // rising until T.name + 0.95s, and a highlight crossing letters that are
+    // also moving and unblurring reads as a glitch rather than as a sheen — so
+    // it sits just past that, with the sweep's own slow start covering the
+    // last of it.
+    //
+    // It happens once. What follows it is not a repeat but a handover: the
+    // wordmark keeps a highlight from then on and gives it to the pointer.
+    const actionsRef = useRef<HTMLDivElement>(null);
+    useShimmerRow(actionsRef);
+    const shimmer = useShimmer({ gate: start, lead: 1150 });
+
     const enter = (delay: number, duration = 0.7) =>
         ({ duration, delay, ease: [0.22, 1, 0.36, 1] as const });
 
@@ -50,7 +65,10 @@ function About({ heroRef, start, onReady }: Props) {
         <section id="about" ref={heroRef}>
             <GradientField parallaxTarget={heroRef} start={start} />
 
-            <div id="about-hero">
+            {/* The shimmer class goes here because the pass spans both the
+                wordmark and the action row, and this is the nearest element
+                that contains the pair. */}
+            <div id="about-hero" className={shimmer.className}>
                 {/* Three nested elements, each with exactly one concern. The
                     outer one is transformed every frame; the middle one carries
                     the drop-shadow. A drop-shadow on an element that is also
@@ -87,7 +105,12 @@ function About({ heroRef, start, onReady }: Props) {
                     </div>
                 </m.div>
 
-                <AboutName heroRef={heroRef} start={start} delay={T.name} />
+                <AboutName
+                    heroRef={heroRef}
+                    start={start}
+                    delay={T.name}
+                    trackPointer={shimmer.played}
+                />
 
                 <div id="about-summary">
                     <BlurFade gate={start} delay={T.headline} duration={0.55} offset={14}>
@@ -103,7 +126,7 @@ function About({ heroRef, start, onReady }: Props) {
                     </BlurFade>
 
                     <BlurFade gate={start} delay={T.actions} duration={0.5} offset={12}>
-                        <div className="about-actions">
+                        <div className="about-actions" ref={actionsRef}>
                             {/* Icon-only: the copy column is narrow enough
                                 that a text label here wraps "Download CV" onto
                                 a second row. The aria-label names it. */}
