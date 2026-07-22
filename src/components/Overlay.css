@@ -1,15 +1,17 @@
+/* `fixed` + `inset: 0` covers the viewport at any scroll position, and avoids
+   `100vw`, which includes the desktop scrollbar gutter and would introduce
+   horizontal overflow. */
 #overlay {
-  position: absolute;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background-color: white;
-  text-align: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  z-index: 9999;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--paper);
+    color: var(--ink-2);
+    font-size: var(--step--1);
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    text-align: center;
 }

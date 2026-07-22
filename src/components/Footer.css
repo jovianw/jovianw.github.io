@@ -1,29 +1,46 @@
 .footer {
-    width: 100%;
-    background: var(--darker-color);
-    color: var(--lightest-color);
-    padding: 5rem 0;
-    text-align: center;
     position: relative;
     z-index: 10;
+    width: 100%;
+    padding: var(--space-6) var(--gutter);
+    /* The aurora renders behind this, so the footer itself paints nothing. */
+    background: transparent;
+    color: var(--ink);
+    text-align: center;
+    overflow-x: clip;
 }
 
 .footer-content {
+    position: relative;
+    z-index: 2;
     max-width: 700px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1rem;
+    gap: var(--space-2);
 }
 
 .footer-thanks {
-    font-size: 1.3rem;
-    font-weight: 500;
+    max-width: none;
+    font-size: var(--step-1);
+    font-weight: 560;
+    letter-spacing: var(--track-tight);
+    text-wrap: balance;
+}
+
+.footer-actions {
+    justify-content: center;
 }
 
 .footer-copyright {
-    font-size: smaller;
-    color: #aaa;
-    margin-top: 0.7em;
+    margin-top: var(--space-2);
+    font-size: var(--step--1);
+    letter-spacing: var(--track-caps);
+    text-transform: uppercase;
+    color: var(--ink-2);
+}
+
+.footer a:not(.btn) {
+    color: var(--accent);
 }

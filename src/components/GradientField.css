@@ -1,0 +1,310 @@
+/* The aurora field. Used behind the hero and again behind the footer.
+ *
+ * Five soft radial lights plus a sixth that tracks the cursor. Each drifts,
+ * breathes and counter-rotates on its own loop at a different period — 23s to
+ * 41s, deliberately unrelated — so the overlaps never land the same way twice
+ * and the field never visibly repeats.
+ *
+ * FEATHERING. Two things keep the lights edgeless:
+ *
+ *   1. `closest-side`, not the default `farthest-corner`. In a square element a
+ *      farthest-corner gradient reaches its 100% stop at the *corner*, which is
+ *      r x sqrt(2) away, so at the circle's own edge it is only ~71% through
+ *      its ramp and still carries visible alpha when `border-radius: 50%` clips
+ *      it — which shows as a faint arc. `closest-side` ends the ramp exactly at
+ *      the edge it is clipped to.
+ *
+ *   2. An eight-stop falloff approximating a gaussian. With three stops, alpha
+ *      falls linearly and then stops dead, and that discontinuity in the *rate*
+ *      of change reads as a border even though the value itself is continuous.
+ *
+ * Two deliberate omissions:
+ *   - No `mix-blend-mode: screen`. Screen is lightening-only, so every overlap
+ *     is driven toward white and the field flattens into one pastel smear.
+ *   - No `filter: blur()` on the moving layers. A blurred layer is
+ *     re-rasterised on every frame it moves, and these are already soft.
+ *
+ * The ambient loops animate the standalone `translate`, `scale` and `rotate`
+ * properties, never `transform`. Motion writes `transform` for the pointer
+ * parallax, and keeping them separate lets the two compose rather than one
+ * overwriting the other.
+ */
+
+.gradient-field {
+    position: absolute;
+    /* Generous overscan so neither the drift, the pointer travel nor the scroll
+       parallax can pull an edge into view. The bottom reaches well past the
+       section so the field can dissolve across the boundary rather than being
+       cut off at it. */
+    inset: -25% -20% -46% -20%;
+    z-index: 0;
+    overflow: hidden;
+    pointer-events: none;
+    background: var(--paper);
+    contain: layout paint style;
+    /* The field fades itself out. Masking here rather than overlaying the
+       section means the dissolve is not tied to where one section stops and the
+       next starts, so there is no point at which the colour "ends". */
+    mask-image: linear-gradient(to bottom, #000 52%, rgba(0, 0, 0, 0.55) 74%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 52%, rgba(0, 0, 0, 0.55) 74%, transparent 100%);
+}
+
+/* The footer's copy is the last thing on the page, so its field keeps full
+   strength all the way down instead of dissolving. */
+.footer .gradient-field {
+    inset: -25% -20% -20% -20%;
+    mask-image: linear-gradient(to bottom, transparent 0%, #000 34%);
+    -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 34%);
+}
+
+.gradient-field .blob {
+    position: absolute;
+    border-radius: 50%;
+    will-change: transform;
+}
+
+/* vmax rather than vw: in vw these collapse to slivers on a tall phone. */
+
+/* Deep blue, lower right. */
+.gradient-field .blob--deep {
+    width: 92vmax;
+    height: 92vmax;
+    right: -22%;
+    bottom: -34%;
+    background: radial-gradient(
+        circle closest-side at 50% 50%,
+        rgba(var(--light-deep), 0.34) 0%,
+        rgba(var(--light-deep), 0.31) 15%,
+        rgba(var(--light-deep), 0.25) 30%,
+        rgba(var(--light-deep), 0.18) 45%,
+        rgba(var(--light-deep), 0.1) 60%,
+        rgba(var(--light-deep), 0.05) 72%,
+        rgba(var(--light-deep), 0.02) 84%,
+        rgba(var(--light-deep), 0) 100%
+    );
+    animation: drift-a 34s ease-in-out infinite;
+}
+
+/* Mid blue, upper left. The dominant light. */
+.gradient-field .blob--cool {
+    width: 100vmax;
+    height: 100vmax;
+    left: -24%;
+    top: -18%;
+    background: radial-gradient(
+        circle closest-side at 50% 50%,
+        rgba(var(--light-cool), 0.62) 0%,
+        rgba(var(--light-cool), 0.57) 15%,
+        rgba(var(--light-cool), 0.46) 30%,
+        rgba(var(--light-cool), 0.32) 45%,
+        rgba(var(--light-cool), 0.19) 60%,
+        rgba(var(--light-cool), 0.09) 72%,
+        rgba(var(--light-cool), 0.03) 84%,
+        rgba(var(--light-cool), 0) 100%
+    );
+    animation: drift-b 27s ease-in-out infinite;
+}
+
+/* The blush through the middle: the colour peach makes over white. */
+.gradient-field .blob--rose {
+    width: 74vmax;
+    height: 74vmax;
+    left: 18%;
+    top: 10%;
+    background: radial-gradient(
+        circle closest-side at 50% 50%,
+        rgba(var(--light-rose), 0.5) 0%,
+        rgba(var(--light-rose), 0.46) 15%,
+        rgba(var(--light-rose), 0.37) 30%,
+        rgba(var(--light-rose), 0.26) 45%,
+        rgba(var(--light-rose), 0.15) 60%,
+        rgba(var(--light-rose), 0.07) 72%,
+        rgba(var(--light-rose), 0.02) 84%,
+        rgba(var(--light-rose), 0) 100%
+    );
+    animation: drift-c 23s ease-in-out infinite;
+}
+
+/* Peach, as an accent low and left rather than a key light. Large and bright
+   in the upper right it washes that whole side orange and buries the blues. */
+.gradient-field .blob--warm {
+    width: 58vmax;
+    height: 58vmax;
+    left: -14%;
+    bottom: -20%;
+    background: radial-gradient(
+        circle closest-side at 50% 50%,
+        rgba(var(--light-warm), 0.46) 0%,
+        rgba(var(--light-warm), 0.42) 15%,
+        rgba(var(--light-warm), 0.34) 30%,
+        rgba(var(--light-warm), 0.24) 45%,
+        rgba(var(--light-warm), 0.14) 60%,
+        rgba(var(--light-warm), 0.06) 72%,
+        rgba(var(--light-warm), 0.02) 84%,
+        rgba(var(--light-warm), 0) 100%
+    );
+    animation: drift-b 41s ease-in-out infinite reverse;
+}
+
+/* Pale blue, upper right — keeps that side cool. */
+.gradient-field .blob--haze {
+    width: 76vmax;
+    height: 76vmax;
+    right: -18%;
+    top: -14%;
+    background: radial-gradient(
+        circle closest-side at 50% 50%,
+        rgba(var(--light-haze), 0.72) 0%,
+        rgba(var(--light-haze), 0.66) 15%,
+        rgba(var(--light-haze), 0.54) 30%,
+        rgba(var(--light-haze), 0.37) 45%,
+        rgba(var(--light-haze), 0.22) 60%,
+        rgba(var(--light-haze), 0.1) 72%,
+        rgba(var(--light-haze), 0.03) 84%,
+        rgba(var(--light-haze), 0) 100%
+    );
+    animation: drift-c 31s ease-in-out infinite reverse;
+}
+
+/* The cursor light, violet. Deliberately huge and faint rather than tight and
+   bright: its falloff is far wider than the distance it ever travels, so it
+   reads as the field warming on the side you are pointing at rather than as a
+   spotlight with an edge. Centred here; Motion offsets it from the centre by
+   the sprung pointer delta. It breathes on its own loop so it is alive when the
+   pointer is still. */
+.gradient-field .blob--spot {
+    width: 96vmax;
+    height: 96vmax;
+    left: 50%;
+    top: 50%;
+    translate: -50% -50%;
+    background: radial-gradient(
+        circle closest-side at 50% 50%,
+        rgba(var(--light-spot), 0.3) 0%,
+        rgba(var(--light-spot), 0.27) 15%,
+        rgba(var(--light-spot), 0.22) 30%,
+        rgba(var(--light-spot), 0.15) 45%,
+        rgba(var(--light-spot), 0.09) 60%,
+        rgba(var(--light-spot), 0.04) 72%,
+        rgba(var(--light-spot), 0.015) 84%,
+        rgba(var(--light-spot), 0) 100%
+    );
+    animation: breathe 19s ease-in-out infinite;
+}
+
+/* Three loops at unrelated periods, each combining a drift with a slow breath
+   and a counter-rotation. The rotation matters more than it sounds: rotating an
+   off-centre radial sweeps its bright core around, which is what gives the
+   overlaps their slow curl. */
+@keyframes drift-a {
+    0%,
+    100% {
+        translate: 0 0;
+        scale: 1;
+        rotate: 0deg;
+    }
+    33% {
+        translate: 7% -5%;
+        scale: 1.12;
+        rotate: 8deg;
+    }
+    66% {
+        translate: -5% 4%;
+        scale: 0.94;
+        rotate: -6deg;
+    }
+}
+
+@keyframes drift-b {
+    0%,
+    100% {
+        translate: 0 0;
+        scale: 1;
+        rotate: 0deg;
+    }
+    40% {
+        translate: -8% 6%;
+        scale: 0.92;
+        rotate: -10deg;
+    }
+    75% {
+        translate: 5% 3%;
+        scale: 1.1;
+        rotate: 7deg;
+    }
+}
+
+@keyframes drift-c {
+    0%,
+    100% {
+        translate: 0 0;
+        scale: 1;
+        rotate: 0deg;
+    }
+    30% {
+        translate: 9% 7%;
+        scale: 1.16;
+        rotate: 12deg;
+    }
+    70% {
+        translate: -7% -6%;
+        scale: 0.9;
+        rotate: -9deg;
+    }
+}
+
+@keyframes breathe {
+    0%,
+    100% {
+        scale: 1;
+        opacity: 0.9;
+    }
+    50% {
+        scale: 1.12;
+        opacity: 1;
+    }
+}
+
+/* Dither. A gradient this wide steps through 8-bit colour slowly enough that
+   each step spans tens of pixels, and those steps read as concentric contour
+   bands — one level per channel, or 9 summed RGB, between adjacent pixels.
+   Noise at roughly that amplitude breaks the boundaries up so the eye
+   integrates them back into a smooth ramp. `soft-light` rather than `multiply`
+   so it dithers in both directions instead of only darkening. */
+.field-grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.09;
+    mix-blend-mode: soft-light;
+    background-size: 200px 200px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Touch / no-hover: the pointer listener is never attached, so drop the layer
+   promotion and the cursor light and reclaim the compositor memory. */
+@media (hover: none), (pointer: coarse) {
+    .gradient-field .blob {
+        will-change: auto;
+    }
+
+    .gradient-field .blob--spot {
+        display: none;
+    }
+
+    .field-grain {
+        display: none;
+    }
+}
+
+@media (prefers-contrast: more) {
+    .gradient-field .blob {
+        opacity: 0.4;
+    }
+}
+
+@media (forced-colors: active) {
+    .gradient-field {
+        display: none;
+    }
+}

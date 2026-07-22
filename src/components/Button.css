@@ -1,0 +1,200 @@
+/* The single button system, used for every control on the site.
+ *
+ * Hover is a flow-fill: a gradient panel in the secondary blue sweeps in from
+ * the left with a rounded leading edge, and the label crosses from white to ink
+ * as it passes. It is one compositor-only transform — no width animation, no
+ * layout, no repaint of the label.
+ *
+ * The ring is drawn by `::after` rather than a real CSS border, because
+ * `overflow: hidden` clips to the *padding* box: with a real border the fill
+ * would stop a pixel short all the way around, as if it were leaving room for
+ * the ring. With no border box to clip against, the fill reaches the true edge
+ * and the ring paints on top of it.
+ */
+
+.btn {
+    --btn-bg: var(--ink);
+    --btn-fg: var(--ink-inv);
+    --btn-bd: transparent;
+    --btn-fg-hover: var(--ink);
+    --btn-h: 44px; /* WCAG 2.5.5 touch-target floor */
+
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55em;
+
+    min-height: var(--btn-h);
+    min-width: var(--btn-h);
+    padding-inline: 1.15em;
+
+    font-size: var(--step--1);
+    font-weight: 580;
+    letter-spacing: -0.005em;
+    line-height: 1;
+    white-space: nowrap;
+    text-decoration: none;
+    text-align: center;
+
+    color: var(--btn-fg);
+    background: var(--btn-bg);
+    border: 0;
+    border-radius: var(--radius-btn);
+
+    cursor: pointer;
+    -webkit-appearance: none;
+    appearance: none;
+    box-shadow: var(--e1);
+
+    transition: transform var(--dur-micro) var(--ease-out-quint),
+        box-shadow var(--dur-micro) var(--ease-out-quint),
+        color 260ms var(--ease-out-quint);
+}
+
+/* The sweep. Half again as wide as the button with an elliptical right edge,
+   parked entirely off to the left. Sliding it to 0 brings the curved front
+   across and pushes the rounded edge out past the right side, where it is
+   clipped — so mid-sweep you see a flowing front, and at rest it is a clean
+   full fill. */
+.btn::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 150%;
+    z-index: 0;
+    background: linear-gradient(100deg, var(--accent-2) 0%, var(--accent-2-lift) 100%);
+    border-radius: 0 46% 46% 0 / 0 50% 50% 0;
+    /* 6px of clearance beyond -100%. Parked at exactly -100% the fill's
+       rounded right edge sits on the button's left edge and its antialiased
+       pixels straddle the boundary, showing a blue sliver in column 0 at rest.
+       A fixed length rather than a percentage, since the icon buttons are only
+       44px wide. */
+    transform: translateX(calc(-100% - 6px));
+    transition: transform 520ms var(--ease-out-quint);
+}
+
+/* The ring, painted over the fill so the fill can reach the real edge. */
+.btn::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    border: 1px solid var(--btn-bd);
+    border-radius: inherit;
+    pointer-events: none;
+    transition: border-color var(--dur-ui) var(--ease-out-quint);
+}
+
+/* Above the fill. */
+.btn > * {
+    position: relative;
+    z-index: 1;
+}
+
+.btn:hover,
+.btn:focus-visible {
+    transform: translateY(-1px);
+    box-shadow: var(--e2);
+    color: var(--btn-fg-hover);
+}
+
+.btn:hover::before,
+.btn:focus-visible::before {
+    transform: translateX(0);
+}
+
+/* The icon trails the body by one beat. The 20ms delay is the whole trick — it
+   makes the control read as two coupled masses rather than one rectangle. */
+.btn > svg {
+    width: 1.05em;
+    height: 1.05em;
+    flex: none;
+    transition: transform var(--dur-ui) var(--ease-out-quint) 20ms;
+}
+
+.btn:hover > svg {
+    transform: translateX(2px);
+}
+
+/* A download reads downward. */
+.btn--cv:hover > svg {
+    transform: translateY(2px);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.985);
+    box-shadow: var(--e1);
+    transition-duration: var(--dur-press);
+}
+
+/* Never removed, never replaced with a box-shadow ring. */
+.btn:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+}
+
+.btn:disabled,
+.btn[aria-disabled="true"] {
+    opacity: 0.45;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+    pointer-events: none;
+}
+
+/* ---- Icon-only: square, same height. Must carry an aria-label. ----------- */
+.btn--icon {
+    padding-inline: 0;
+    width: var(--btn-h);
+}
+
+.btn--icon > svg {
+    width: 1.15em;
+    height: 1.15em;
+}
+
+.btn--icon:hover > svg {
+    transform: none; /* nothing to trail */
+}
+
+/* ---- Small: the timeline card CTA --------------------------------------- */
+.btn--sm {
+    --btn-h: 34px;
+    padding-inline: 0.85em;
+}
+
+/* ---- Inverted, for the dark footer and dark card overlays --------------- */
+.btn--invert {
+    --btn-bg: var(--ink-inv);
+    --btn-fg: var(--ink);
+}
+
+.btn--invert.btn--ghost {
+    --btn-bg: transparent;
+    --btn-fg: var(--ink-inv);
+    --btn-bd: rgba(255, 255, 255, 0.32);
+}
+
+.btn--invert:focus-visible {
+    outline-color: var(--accent-on-dark);
+}
+
+@media (prefers-contrast: more) {
+    .btn::after {
+        border-color: currentColor;
+    }
+}
+
+/* ---- Row layout ---------------------------------------------------------- */
+.about-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: var(--space-3);
+}

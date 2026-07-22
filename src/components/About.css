@@ -1,243 +1,285 @@
-/* About */
+/* The hero.
+ *
+ * Block flow with a right-floated portrait: the summary sits beside it rather
+ * than in its own column.
+ *
+ * All vertical sizing is in svh rather than percentages, because the hero is
+ * min-height driven and a percentage has no definite height to resolve
+ * against.
+ */
+
 #about {
-    overflow: hidden;
-    height: 100vh;
-    height: var(--inner-height);
-    width: 100%;
-    -ms-overflow-style: none;
-    /* box-shadow: rgba(0, 0, 0, 0.24) 0px 4px 12px; */
-}
-
-#about-hero {
-    padding: 0 15%;
-    overflow: hidden;
     position: relative;
+    min-height: 100svh;
     width: 100%;
+    /* Clipped horizontally only. The gradient field extends past the bottom
+       of this section and dissolves inside the timeline; clipping it here
+       would end the colour at the boundary, and a place where colour stops
+       reads as a divide just as much as a hard line does. */
+    overflow-x: clip;
+    overflow-y: visible;
+    display: flow-root;
+}
+
+/* The 15% inset places the portrait horizontally, and the narrower column it
+   creates is what keeps the wordmark to a sane size on wide displays. */
+#about-hero {
+    position: relative;
+    z-index: 1;
+    display: flow-root; /* contains the float */
+    min-height: 100svh;
+    padding: 0 15% clamp(28px, 5svh, 64px);
+}
+
+/* ---- Portrait ------------------------------------------------------------ */
+#about-img-parallax {
+    float: right;
+    /* A plain rectangular float, not `shape-outside`. The portrait is a
+       rectangular crop with only partial transparency, so a silhouette wrap
+       lets body copy run underneath the opaque gown at narrower widths. A
+       float's margin box can never be overlapped.
+
+       10svh/90svh puts it at y 90->900 on a 900px viewport, with its right
+       edge 5% past the content box. */
+    position: relative;
+    z-index: 9;
+    top: 10svh;
+    height: 90svh;
+    margin-right: -5%;
+    will-change: transform;
+}
+
+/* Filter concern only, never transformed, so the shadow rasterises once. */
+#about-img-depth {
     height: 100%;
-}
-
-#about-gradient-bg {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    overflow: hidden;
-}
-
-#about-gradient-bg .blob {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    filter: blur(200px);
-    mix-blend-mode: screen;
-    animation: drift 14s ease-in-out infinite;
-}
-
-#about-gradient-bg .blob.bottom-right {
-    background: #0b51b3;
-    top: 20%;
-    left: 30%;
-    animation-delay: 0s;
-}
-
-#about-gradient-bg .blob.bottom-left {
-    background: rgba(255,177,131);
-    top: 10%;
-    left: 0%;
-    animation-delay: -10s;
-}
-
-#about-gradient-bg .blob.top-left {
-    background: #5C8BCF;
-    top: -10%;
-    left: -20%;
-    animation-delay: -5s;
-}
-
-/* 4. Gentle keyframe drift */
-@keyframes drift {
-    0%, 100% {
-        transform: translate(0, 0) scale(1);
-        opacity: 1;
-    }
-
-    25% {
-        transform: translate(40px, -60px) scale(1.1);
-        opacity: 0.8;
-    }
-
-    50% {
-        transform: translate(-30px, 40px) scale(0.9);
-        opacity: 0.6;
-    }
-
-    75% {
-        transform: translate(20px, 20px) scale(1.05);
-        opacity: 0.9;
-    }
+    filter: drop-shadow(-16px 22px 38px rgba(28, 34, 58, 0.2))
+        drop-shadow(-4px 6px 10px rgba(28, 34, 58, 0.13));
 }
 
 #about-img {
-    z-index: 9;
+    height: 100%;
+    width: auto;
+    max-width: none;
+    display: block;
+    /* The source is cropped flat at the bottom. At exactly 100svh tall that
+       cut lands on the viewport edge and is invisible, but the hero grows when
+       the copy is long, so the last few percent are faded for that case. The
+       drop-shadow is a filter on the parent, so it follows the faded alpha
+       rather than tracing the cut. */
+    mask-image: linear-gradient(to bottom, #000 94%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, #000 94%, transparent 100%);
+}
+
+/* ---- Wordmark ------------------------------------------------------------ */
+/* The wordmark is absolutely positioned at this container's bottom edge, so
+   this height is what sets its vertical position on the page. */
+#about-name-container {
     position: relative;
-    top: 10%;
-    margin-right: -5%;
-    height: 90%;
-    float: right;
-    shape-outside: url(/graduation_3.png);
-    user-drag: none;
-    -webkit-user-drag: none;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    width: 100%;
+    min-height: clamp(180px, 40svh, 460px);
 }
 
 #about-name {
-    width: 100%;
-    overflow: hidden;
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    color: var(--darker-color);
-    line-height: 0.8;
+    inset: auto 0 0 0;
+    width: 100%;
+    color: var(--ink);
+    line-height: 0.78;
+    will-change: transform;
 }
 
 .about-name-text {
-    user-select: none;
-    line-height: 0.8;
-    box-sizing: border-box;
-    margin: 0 auto;
-    padding: 0;
-    font-weight: 800;
-    white-space: nowrap;
+    display: block;
     width: max-content;
+    margin: 0 auto;
+    line-height: 0.78;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: var(--track-wordmark);
+    /* Padding, not a negative margin. `letter-spacing` applies after every
+       glyph including the last, so with negative tracking the element's advance
+       width is narrower than the glyphs actually paint and the final letter
+       overhangs the box. This puts the trailing space back inside the box, so
+       the measured width is the inked width and the auto margins centre it.
+       A negative `margin-right` does not work here: `margin-inline: auto`
+       absorbs it and shifts the whole line right instead. */
+    padding-right: calc(-1 * var(--track-wordmark));
+    white-space: nowrap;
 }
 
-#about-name-container {
-    height: 40%;
-    position: relative;
-    margin: 0 -1%;
-    width: 100%;
-}
-
+/* ---- Summary ------------------------------------------------------------- */
+/* `flow-root` makes this a block formatting context, which is what guarantees
+   it can never sit underneath the floated portrait: a BFC box shrinks to the
+   space beside a float instead of flowing behind it. Line boxes shortening is
+   not sufficient on its own. The measure still caps the column on wide screens,
+   so this only narrows it when the portrait is genuinely close. */
 #about-summary {
-    padding-top: 24px;
-    max-height: 45%;
+    position: relative;
+    z-index: 2;
+    display: flow-root;
+    /* Indents the copy to start just inside the wordmark's first stroke rather
+       than flush with the padding edge. The wordmark is fitted to the full
+       column width, so its glyph starts a little right of the box edge and
+       un-indented copy reads as hanging left. */
+    margin-left: clamp(10px, 1.9%, 40px);
+    min-height: 0; /* grows rather than clipping — never max-height */
+    max-width: var(--measure);
+    padding-top: clamp(16px, 2.6svh, 30px);
 }
 
 #about-summary h2 {
-    font-size: 24px;
-    font-weight: normal;
+    font-size: var(--step-1);
+    font-weight: 560;
+    line-height: var(--lh-snug);
+    letter-spacing: var(--track-tight);
+    text-wrap: balance;
 }
 
 #about-summary p {
-    margin-top: 24px;
+    margin-top: var(--space-2);
+    font-size: var(--step-0);
+    line-height: var(--lh-body);
+    max-width: var(--measure);
+    color: var(--ink); /* never --ink-2 over the gradient field */
 }
 
-
-.about-social-icons--link svg {
-    width: 2em;
-}
-
-.about-social-icons--link {
-    background-color: var(--darker-color);
-    transition: 0.1s ease-in;
-    text-decoration: none;
-    height: 2em;
-    font-weight: bolder;
-    color: var(--lightest-color);
-    text-align: center;
-    border-radius: 5px;
-    font-size: x-large;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.about-social-icons--link:hover {
-    background-color: var(--highlight-color);
-}
-
-.about-social-icons-text {
-    padding-left: 0.6em;
-}
-
-.about-social-icons-text h4 {
-    font-size: large;
-}
-
-.about-social {
-    margin-top: 0.7em;
-    display: flex;
-    column-gap: 1ch;
-}
-
+/* ---- Wide-but-short screens ---------------------------------------------- */
 @media screen and (max-aspect-ratio: 29/20) {
-    #about-img {
-        z-index: 9;
-        position: relative;
-        top: 10%;
-        margin-right: -30%;
-        height: 90%;
-        float: right;
-        shape-outside: url(/graduation_3.png);
+    #about-img-parallax {
+        margin-right: -30%; /* more stick-out where height is scarce */
     }
 }
 
+/* ---- Stacked layout ------------------------------------------------------ */
+/* The portrait is taken out of flow and centred, and the wordmark sits *behind*
+   it — fitted to the full column while the portrait is capped at 70% of it, so
+   roughly 40px of "JO...AN" and "W...G" reads out either side. That layering is
+   the whole look: stacking the two vertically loses it, and letting the portrait
+   cover the name entirely loses it the other way. */
 @media screen and (max-aspect-ratio: 46/39) {
-    #about-img {
-        position: absolute !important;
-        top: auto !important;
-        bottom: 40% !important;
+    /* One adaptive set of values rather than breakpoint tiers.
+       --band is the wordmark's vertical space: it wants 57svh, but the copy
+       below needs a roughly fixed ~340px whatever the screen height, so on
+       shorter phones the band gives that up first.
+       --portrait-h is derived from the width, not the height: the hero is
+       inset 15% a side and the portrait is 76% of what remains, so its height
+       is 0.76 x 70vw / (1400/1546) = 58.8vw. Driving it from width is what
+       keeps the wordmark sticking out ~33px either side at every screen
+       height; in svh the portrait outgrows the wordmark on tall phones and the
+       stick-out collapses. */
+    #about-hero {
+        display: block;
+        --wm-offset: clamp(0px, calc((100svh - 100vw) / 8), 18vw);
+        /* The reserve grows on narrower screens: the same paragraph wraps to
+           noticeably more lines at 320px than at 390px, and a flat reserve
+           would put the smallest phones' buttons under the fold. */
+        --band: max(
+            210px,
+            min(62svh, calc(100svh - 352px - max(0px, 390px - 100vw) * 0.7))
+        );
+        /* Bounded by the band as well as by width. At a near-square window
+           (1032x917) the band is height-derived while the width term is not, so
+           without the band bound the portrait comes out taller than the space
+           above the copy and its top is pushed against the edge. */
+        --portrait-h: min(58.8vw, 560px, calc(var(--band) * 0.78));
+    }
+
+    /* Top-anchored with a definite height. A bottom-anchored percentage would
+       need the hero to have a fixed height to resolve against; this hero grows
+       with its copy, so anchoring from the top is what keeps the portrait inside
+       the wordmark's band whatever the paragraph does.
+
+       The height also sets the width, and the width is what makes the
+       composition: the portrait comes out narrower than the fitted wordmark, so
+       roughly 30px of "JO...AN" and "W...G" reads out either side. */
+    #about-img-parallax {
+        position: absolute;
+        /* Its lower edge lands just inside the band, below the wordmark but
+           always above the copy. The offset is a fraction of the band rather
+           than a fixed svh, so it stays proportional: a flat `7svh` is a couple
+           of pixels on a phone but ~40px on a 1368px-tall tablet, which drops
+           the portrait onto the headline and paints it over the text. */
+        /* max() is a hard floor: the portrait can never crowd the top edge,
+           whatever the window shape. It only binds in the rare case where the
+           band is short enough that 0.78 of it still leaves little headroom. */
+        top: max(6svh, calc(var(--band) - var(--wm-offset) * 0.4 - var(--portrait-h)));
+        bottom: auto;
         left: 50%;
-        transform: translateX(-50%);
-        height: auto;
-        max-height: 50%;
-        max-width: 70%;
-        margin: 0;
+        /* The standalone `translate` property, not `transform`: Motion writes
+           `transform` here for the entrance and the parallax, and would
+           overwrite the centring. These compose. */
+        translate: -50% 0;
         float: none;
-        shape-outside: none;
+        /* Height drives the box and the width follows from the intrinsic
+           aspect, because --portrait-h is the value carrying all three
+           constraints (viewport width, an absolute cap, and the band). */
+        height: var(--portrait-h);
+        width: auto;
+        max-height: none;
+        max-width: none;
+        margin: 0;
+        z-index: 9;
+    }
+
+    #about-img {
+        height: 100%;
+        width: auto;
+        max-width: none;
+    }
+
+    /* Behind the portrait, which is the point. svh rather than a percentage:
+       a percentage resolves against the parent's *definite* height, and this
+       hero is `min-height` driven, so it would collapse to nothing and throw
+       the wordmark off the top of the screen. */
+    #about-name-container {
+        min-height: var(--band);
+        z-index: 1;
     }
 
     #about-name {
-        bottom: clamp(0px, calc((100vh - 100vw) / 5), 30vw);
+        bottom: var(--wm-offset);
     }
 
-    #about-name-container {
-        height: 60%;
-    }
-
-    #about-hero {
-        overflow: hidden;
+    /* No measure cap in the stacked layout. It exists on desktop to stop the
+       copy running the full width of a wide screen, but here the column is
+       already narrow and centred by the hero's symmetric padding, and capping
+       it again would hold the paragraph short of the right edge so the block
+       reads as stuck to the left. */
+    #about-summary,
+    #about-summary p {
+        max-width: none;
     }
 
     #about-summary {
-        height: 35%;
+        margin-left: 0;
+        padding-top: clamp(6px, 1svh, 14px);
+        padding-bottom: clamp(12px, 2.2svh, 30px);
     }
 }
 
-@media screen and (max-width: 500px) {
-    .about-social-icons--link {
-        font-size: x-large;
+/* Phone-sized copy, scoped by WIDTH rather than riding along with the
+   aspect-ratio query that picks the stacked composition. A portrait tablet is
+   also "narrow" by aspect, but 18px headings and 13px body on a 912px-wide
+   screen read as a phone layout blown up. Where the screen really is small, the
+   room comes out of the scale and the leading, holding a 13px floor on body
+   copy. */
+@media screen and (max-aspect-ratio: 46/39) and (max-width: 600px) {
+    #about-summary h2 {
+        font-size: var(--step-0);
     }
 
-    #about-gradient-bg .blob.bottom-right {
-        animation-delay: 0s;
-        animation: drift 9s ease-in-out infinite;
+    #about-summary p {
+        font-size: var(--step--1);
+        line-height: 1.5;
+        margin-top: var(--space-1);
     }
-    
-    #about-gradient-bg .blob.bottom-left {
-        animation-delay: 0s;
-        animation: drift 11s ease-in-out infinite;
+
+    .copytext {
+        margin-top: var(--space-2);
+        font-size: var(--step--1);
     }
-    
-    #about-gradient-bg .blob.top-left {
-        animation-delay: 0s;
-        animation: drift 14s ease-in-out infinite;
+
+    .about-actions {
+        margin-top: var(--space-2);
     }
 }

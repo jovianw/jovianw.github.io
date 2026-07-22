@@ -1,147 +1,254 @@
+/* The project grid.
+ *
+ * At rest a card is its image. Hovering blurs and scales the image, drops a
+ * dark panel over it, and slides the text up from the halfway mark.
+ */
+
+/* No background of its own: `body` already paints the paper, and an opaque
+   background here would hide the hero's field where it dissolves across the
+   top of this section. */
+#timeline-section {
+    position: relative;
+}
+
 #timeline {
-  display: grid;
-  grid-auto-flow: row;
-  grid-auto-rows: minmax(40vh, 300px);
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px 30px;
-  padding: 50px;
+    position: relative;
+    z-index: 1;
+}
+
+#timeline {
+    max-width: var(--grid-max);
+    margin-inline: auto;
+    padding: var(--space-5) var(--gutter) var(--space-6);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-auto-rows: minmax(40vh, 300px);
+    gap: var(--space-3);
+}
+
+.timeline-cell {
+    min-height: 0;
 }
 
 .timeline-card {
-  --card-transition: 0.5s;
-  background: var(--lightest-color);
-  overflow: hidden;
-  border-radius: 20px;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-  position: relative;
-  z-index: 1;
-  position: relative;
+    --card-transition: 0.5s;
+    position: relative;
+    height: 100%;
+    isolation: isolate;
+    overflow: hidden;
+    border-radius: 20px;
+    background: var(--ink-inv);
+    /* Heavier than the shared --e1, since these sit on a very light page and
+       need more separation from it. */
+    box-shadow: 0 2px 6px rgba(16, 18, 20, 0.1), 0 12px 28px -10px rgba(16, 18, 20, 0.34);
+    /* No `content-visibility: auto` here. It skips layout for offscreen cards,
+       so the text fitter measures a card with no geometry yet and silently
+       leaves it unscaled. With 21 cards and images averaging 27 kB, the paint
+       saving is not worth the correctness cost. */
+    transition: box-shadow var(--dur-ui) var(--ease-out-quint);
+}
+
+.timeline-card:hover,
+.timeline-card:focus-within {
+    box-shadow: 0 4px 10px rgba(16, 18, 20, 0.12), 0 30px 60px -20px rgba(16, 18, 20, 0.44);
+}
+
+.timeline-media {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
 }
 
 .timeline-image {
-  inline-size: 100%;
-  object-fit: cover;
-  height: 100%;
-  transition: var(--card-transition);
+    width: 100%;
+    height: 100%;
+    max-width: none;
+    object-fit: cover;
+    display: block;
+    transition: var(--card-transition);
+}
+
+.timeline-card:hover .timeline-image,
+.timeline-card:focus-within .timeline-image {
+    transform: scale(1.07);
+    filter: blur(5px);
+}
+
+.timeline-veil {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0;
+    pointer-events: none;
+    transition: var(--card-transition);
+    will-change: opacity;
+}
+
+.timeline-card:hover .timeline-veil,
+.timeline-card:focus-within .timeline-veil {
+    opacity: 1;
 }
 
 .timeline-text {
-  position: absolute;
-  top: 50%;
-  bottom: 0;
-  overflow-y: hidden;
-  word-break: break-word;
-  padding: 20px;
-  color: var(--lightest-color);
-  opacity: 0;
-  transition: var(--card-transition);
-  height: 100%;
+    position: absolute;
+    top: 50%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    overflow-y: hidden;
+    word-break: break-word;
+    /* Kept tight on purpose. On the longest card most of the block's height
+       is this padding plus the fixed-height CTA rather than text, so trimming
+       it buys far more room than scaling the type does. */
+    padding: 16px;
+    color: var(--ink-inv);
+    opacity: 0;
+    transition: var(--card-transition);
+    /* The base the fitter scales. Every child below is sized in `em`, so one
+       value on this element resizes the whole block proportionally. */
+    font-size: var(--step--1);
 }
 
-.timeline-text p {
-  margin-top: 0.5em;
+.timeline-card:hover .timeline-text,
+.timeline-card:focus-within .timeline-text {
+    opacity: 1;
+    top: 0;
+    /* Safety net. The fitter gets every current card within a line of fitting,
+       but a longer description added later stays reachable by scrolling rather
+       than being silently cut. */
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.4) transparent;
+    overscroll-behavior: contain;
 }
 
-.timeline-card:hover .timeline-text {
-  opacity: 1;
-  top: 0;
+.timeline-title {
+    font-size: 1.5em;
+    font-weight: 620;
+    letter-spacing: var(--track-tight);
+    line-height: var(--lh-snug);
 }
 
-.timeline-card:hover .timeline-image {
-  transform: scale(1.07);
-  filter: blur(5px);
-}
-
-.timeline-card:hover .timeline-bg {
-  opacity: 1;
-}
-
-.timeline-bg {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-  background-color: rgba(0, 0, 0, 0.7);
-  opacity: 0;
-  transition: var(--card-transition);
-  will-change: opacity;
-}
-
-.timeline-button {
-  transition: 0.1s;
-  transition-delay: 0s;
-  margin-top: 10px;
-  margin-left: -2px;
-  padding: 7px 14px;
-  background: var(--lightest-color);
-  border: 0;
-  outline: none;
-  text-align: center;
-  position: relative;
-  font-size: 12px;
-  font-weight: bold;
-  border-radius: 30px;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  appearance: none;
-}
-
-.timeline-button:hover {
-  background: var(--highlight-color);
-}
-
-.timeline-button span {
-  display: inline;
-  font-size: inherit;
-  vertical-align: middle;
-  margin: 0 -0.2em;
-}
-
-.timeline-button p {
-  display: inline;
+.timeline-year {
+    max-width: none;
+    margin-top: 2px;
+    font-size: 0.92em;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: var(--track-caps);
+    color: var(--ink-inv-2);
+    font-variant-numeric: tabular-nums;
 }
 
 .timeline-chips {
-  margin-top: 0.5em;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px;
+    margin-top: 0.6em;
+    list-style: none;
+    padding: 0;
 }
 
 .timeline-chip {
-  font-weight: 500;
-  letter-spacing: 0.02em;
-  box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-  transition: background 0.2s, color 0.2s;
-  cursor: default;
-  font-size: 0.7em;
-  border-radius: 3px;
-  padding: 2px 10px;
-  margin-right: 4px;
-  display: inline-block;
-  margin-bottom: 2px;
+    font-size: 0.92em;
+    font-weight: 560;
+    letter-spacing: 0.045em;
+    border: 1px solid;
+    border-radius: 3px;
+    padding: 1px 8px;
+    line-height: 1.5;
 }
 
-@media screen and (max-aspect-ratio: 46/39) {
-  #timeline {
-      display: grid;
-      grid-auto-flow: row;
-      grid-auto-columns: 80vw;
-      grid-auto-rows: 80vw;
-      grid-template-columns: auto;
-      padding: 10%;
-  }
-  
-  .timeline-button {
-    background: var(--highlight-color);
-  }
-
-  #comments-container {
-    grid-row-start: span 2 !important;
-    grid-row-end: revert !important;
-  }
+.timeline-desc {
+    max-width: none;
+    margin-top: 0.6em;
+    font-size: 1em;
+    line-height: 1.5;
+    white-space: pre-line;
+    color: var(--ink-inv);
 }
 
-#comments-container {
-  grid-row-start: 1;
-  grid-row-end: span 2;
-  grid-column-end: -1;
+.timeline-text .timeline-cta {
+    /* Two classes on purpose: `.btn` in Button.css also sets font-size and
+       loads later, so a single-class selector loses to it and the CTA falls
+       outside the em scale the fitter relies on. */
+    margin-top: 10px;
+    font-size: 0.92em;
 }
+
+/* Touch: hover does not exist, so nothing may depend on it. The card becomes a
+   stacked image-over-text block with everything permanently visible. No
+   tap-toggle: on a card that also contains a link, the first tap is
+   ambiguous. */
+@media (hover: none) {
+    #timeline {
+        grid-template-columns: 1fr;
+        grid-auto-rows: auto;
+        gap: var(--space-4);
+    }
+
+    .timeline-card {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .timeline-media {
+        position: relative;
+        inset: auto;
+        aspect-ratio: 4 / 3;
+        /* Closes the hairline between the image and the text block. The
+           aspect-ratio box lands on a fractional height, so without this a
+           sub-pixel sliver of the card's own background shows through. */
+        margin-bottom: -1px;
+    }
+
+    .timeline-image,
+    .timeline-card:hover .timeline-image {
+        transform: none;
+        filter: none;
+    }
+
+    /* Light surface on touch. The dark overlay exists on desktop because it
+       sits on top of the image; here the text has its own space below the
+       image and reads better as ink on paper. */
+    .timeline-text {
+        position: static;
+        height: auto;
+        flex: 1;
+        opacity: 1;
+        background: var(--ink-inv);
+        color: var(--ink);
+    }
+
+    .timeline-year {
+        color: var(--ink-2);
+    }
+
+    .timeline-desc {
+        color: var(--ink);
+    }
+
+    /* Solid dark, since the surrounding surface is light here. */
+    .timeline-text .timeline-cta {
+        --btn-bg: var(--ink);
+        --btn-fg: var(--ink-inv);
+    }
+
+    .timeline-veil {
+        display: none;
+    }
+}
+
+@media (min-width: 641px) and (hover: none) {
+    #timeline {
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+}
+
+@media (prefers-contrast: more) {
+    .timeline-veil {
+        background-color: rgba(0, 0, 0, 0.85);
+    }
+}
+
