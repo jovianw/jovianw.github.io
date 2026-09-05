@@ -39,13 +39,19 @@
        lets body copy run underneath the opaque gown at narrower widths. A
        float's margin box can never be overlapped.
 
-       10svh/90svh puts it at y 90->900 on a 900px viewport, with its right
-       edge 5% past the content box. */
+       10svh/90svh puts it at y 90->900 on a 900px viewport.
+
+       The overhang is what buys the copy its measure. The portrait's width is
+       height-derived while the column beside it is width-derived, so on a 16:10
+       laptop the float eats about two thirds of the content box and the
+       paragraph comes out as a ~300px ribbon running well past the fold.
+       Sliding the float out of the box rather than shrinking it keeps the
+       portrait at full size and hands the difference to the copy. */
     position: relative;
     z-index: 9;
     top: 10svh;
     height: 90svh;
-    margin-right: -5%;
+    margin-right: -24%;
     will-change: transform;
 }
 
@@ -76,7 +82,7 @@
 #about-name-container {
     position: relative;
     width: 100%;
-    min-height: clamp(180px, 40svh, 460px);
+    min-height: clamp(180px, 31svh, 420px);
 }
 
 #about-name {
@@ -146,7 +152,7 @@
 /* ---- Wide-but-short screens ---------------------------------------------- */
 @media screen and (max-aspect-ratio: 29/20) {
     #about-img-parallax {
-        margin-right: -30%; /* more stick-out where height is scarce */
+        margin-right: -38%; /* more stick-out where height is scarce */
     }
 }
 
@@ -159,7 +165,7 @@
 @media screen and (max-aspect-ratio: 46/39) {
     /* One adaptive set of values rather than breakpoint tiers.
        --band is the wordmark's vertical space: it wants 57svh, but the copy
-       below needs a roughly fixed ~340px whatever the screen height, so on
+       below needs a roughly fixed ~410px whatever the screen height, so on
        shorter phones the band gives that up first.
        --portrait-h is derived from the width, not the height: the hero is
        inset 15% a side and the portrait is 76% of what remains, so its height
@@ -175,7 +181,7 @@
            would put the smallest phones' buttons under the fold. */
         --band: max(
             210px,
-            min(62svh, calc(100svh - 352px - max(0px, 390px - 100vw) * 0.7))
+            min(62svh, calc(100svh - 412px - max(0px, 390px - 100vw) * 1))
         );
         /* Bounded by the band as well as by width. At a near-square window
            (1032x917) the band is height-derived while the width term is not, so

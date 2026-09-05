@@ -58,8 +58,11 @@ function About({ heroRef, start, onReady }: Props) {
     useShimmerRow(actionsRef);
     const shimmer = useShimmer({ gate: start, lead: 1150 });
 
-    const enter = (delay: number, duration = 0.7) =>
-        ({ duration, delay, ease: [0.22, 1, 0.36, 1] as const });
+    const enter = (delay: number, duration = 0.7) => ({
+        duration,
+        delay,
+        ease: [0.22, 1, 0.36, 1] as const,
+    });
 
     return (
         <section id="about" ref={heroRef}>
@@ -113,19 +116,39 @@ function About({ heroRef, start, onReady }: Props) {
                 />
 
                 <div id="about-summary">
-                    <BlurFade gate={start} delay={T.headline} duration={0.55} offset={14}>
+                    <BlurFade
+                        gate={start}
+                        delay={T.headline}
+                        duration={0.55}
+                        offset={14}
+                    >
                         <h2>{content.headline}</h2>
                     </BlurFade>
 
-                    <BlurFade gate={start} delay={T.body} duration={0.55} offset={14}>
+                    <BlurFade
+                        gate={start}
+                        delay={T.body}
+                        duration={0.55}
+                        offset={14}
+                    >
                         <p>{content.about}</p>
                     </BlurFade>
 
-                    <BlurFade gate={start} delay={T.email} duration={0.5} offset={12}>
+                    <BlurFade
+                        gate={start}
+                        delay={T.email}
+                        duration={0.5}
+                        offset={12}
+                    >
                         <CopyText text={content.email} />
                     </BlurFade>
 
-                    <BlurFade gate={start} delay={T.actions} duration={0.5} offset={12}>
+                    <BlurFade
+                        gate={start}
+                        delay={T.actions}
+                        duration={0.5}
+                        offset={12}
+                    >
                         <div className="about-actions" ref={actionsRef}>
                             {/* Icon-only: the copy column is narrow enough
                                 that a text label here wraps "Download CV" onto
@@ -151,7 +174,7 @@ function About({ heroRef, start, onReady }: Props) {
 
                             <a
                                 className="btn btn--cv"
-                                href="/JovianWang_Resume_2026.pdf"
+                                href="/JovianWang_Resume_CT.pdf"
                                 target="_blank"
                                 rel="noopener noreferrer"
                             >
