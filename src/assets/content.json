@@ -31,7 +31,7 @@
                     "color": "#353839"
                 }
             ],
-            "description": "Cut data-analysis and clinical-reporting turnaround for PK/PD teams by leading design and implementation of a privacy-preserving AI copilot in R Shiny and Python. It sits beside the RStudio session, understands the project, and drafts and explains analysis code, with the analyst approving every step. Patient-level data never leaves the consultancy's environment, and only the minimum context for each task reaches the underlying Azure AI Foundry models. The copilot became a major selling point that helped win multiple new client contracts. "
+            "description": "Cut data-analysis and clinical-reporting turnaround for PK/PD teams by leading design and implementation of a privacy-preserving AI copilot in R Shiny and Python. It sits beside the RStudio session, understands the project, and drafts and explains analysis code, with the analyst approving every step. Patient-level data never leaves the consultancy's environment, and only the minimum context for each task reaches the underlying Azure AI Foundry models. The copilot became a major selling point that helped win multiple new client contracts."
         },
         {
             "image": "askmartin.webp",
