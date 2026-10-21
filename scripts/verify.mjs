@@ -211,7 +211,7 @@ const browser = await chromium.launch({ headless: true });
         chips: document.querySelectorAll('.timeline-chip').length,
         query: [...document.querySelectorAll('.timeline-cta')].filter((x) => x.href.includes('usp=sharing')).length,
     }));
-    check('21 cards, all chips', tl.cards === 21 && tl.chips >= 59, JSON.stringify(tl));
+    check('22 cards, all chips', tl.cards === 22 && tl.chips >= 61, JSON.stringify(tl));
     check('query strings preserved', tl.query === 1);
 
     section('no horizontal overflow');

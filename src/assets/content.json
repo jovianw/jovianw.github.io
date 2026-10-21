@@ -18,6 +18,26 @@
     ],
     "cards": [
         {
+            "image": "ripple.webp",
+            "title": "Winner, MongoDB 2026 Harness Engineering Hackathon",
+            "year": "2026",
+            "chips": [
+                {
+                    "label": "PERSONAL",
+                    "color": "#CC5E13"
+                },
+                {
+                    "label": "AI/ML",
+                    "color": "#353839"
+                }
+            ],
+            "description": "Won 1st place out of 98 teams with three classmates at MongoDB's Harness Engineering & Model Wrangling Hackathon. Ripple designs circuit boards from plain English and continuously improves itself: every failure refines both its agents and the harness that runs them. One of six finalists to pitch at MongoDB.local NYC, where it won the attendee vote and then took 1st on stage.",
+            "link": {
+                "text": "Project",
+                "url": "https://cerebralvalley.ai/e/mongodb-nyc-hackathon/hackathon/gallery/49"
+            }
+        },
+        {
             "image": "fram.webp",
             "title": "Fram Analytics",
             "year": "2026",
