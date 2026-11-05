@@ -38,6 +38,34 @@
             }
         },
         {
+            "image": "moodgallery.webp",
+            "title": "Mood Gallery",
+            "year": "2026",
+            "chips": [
+                {
+                    "label": "PERSONAL",
+                    "color": "#CC5E13"
+                },
+                {
+                    "label": "CORNELL TECH",
+                    "color": "#B31B1B"
+                },
+                {
+                    "label": "AI/ML",
+                    "color": "#353839"
+                },
+                {
+                    "label": "HCI",
+                    "color": "#353839"
+                }
+            ],
+            "description": "Designed and shipped an adaptive art recommender that walks a visitor through The Met's galleries and ends at the one work that matches their mood, built out from a digital prototype I designed for my HCI and Design course at Cornell Tech. The walk is a Bayesian adaptive test: mood axes recovered by factor analysis of language-model ratings of 1,451 works, rooms chosen by expected information gain, and a stopping rule on expected regret. The interface applies the course's methods end to end: heuristic evaluation, questionnaire design, and a mobile-first, accessible layout. Runs on The Met Open Access API with A* routes over the real floor plan and a 3D route map.",
+            "link": {
+                "text": "Website",
+                "url": "https://jovian.wang/mood-gallery/"
+            }
+        },
+        {
             "image": "fram.webp",
             "title": "Fram Analytics",
             "year": "2026",
