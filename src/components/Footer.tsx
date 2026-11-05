@@ -45,7 +45,7 @@ const Footer = () => {
                 <div className="about-actions footer-actions" ref={actionsRef}>
                     <a
                         className="btn"
-                        href="mailto:wg.jovian@gmail.com?subject=Lets connect!"
+                        href="mailto:jlw457@cornell.edu?subject=Lets connect!"
                         rel="noopener noreferrer"
                     >
                         <FontAwesomeIcon icon={faEnvelope} />

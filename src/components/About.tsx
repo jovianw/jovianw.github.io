@@ -155,7 +155,7 @@ function About({ heroRef, start, onReady }: Props) {
                                 a second row. The aria-label names it. */}
                             <a
                                 className="btn btn--icon"
-                                href="mailto:wg.jovian@gmail.com?subject=Lets connect!"
+                                href="mailto:jlw457@cornell.edu?subject=Lets connect!"
                                 rel="noopener noreferrer"
                                 aria-label="Email Jovian"
                             >
